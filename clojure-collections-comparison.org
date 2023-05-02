@@ -1,3 +1,6 @@
+#+OPTIONS: toc:nil
+#+EXPORT_FILE_NAME: index.html
+#+HTML_HEAD: <style type="text/css">body{ max-width:50%; }</style>
 #+COLUMNS: %34ITEM(item) %25LIST(list) %28VECTOR(vector) %24HASH-SET(hash-set) %24SORTED-SET(sorted-set) %27HASH-MAP(hash-map) %37SORTED-MAP(sorted-map)
 
 legend:
@@ -106,7 +109,7 @@ legend:
 :END:
 * create from collection
 :PROPERTIES:
-:list:     ?
+ :list:     ?
  :vector: (vec '(1 2 3))
  :hash-set: (set '(2 3 1))
  :sorted-set: ?
@@ -156,19 +159,15 @@ Definitions from Oxford Languages: sequential - forming or following in a logica
 I was thinking that sorted-set & sorted-map are (= sequential? true)
 They have logical order (they are sorted) so why they are not sequential?
 
-
 dgb23
-  1 hour ago
 hashed collections have sequence representations (map entries) that are sequential.
 I think it is more of an implementation thing. In theory you're right, they are both sequential and hashed collections.
 
 phill
-  1 hour ago
 The sequential? docstring tells me nothing about what it does! I do not see a basis for expectation of any particular return value. It would be a good question for ask.clojure.org so it might get clarified.
 However, it would be normal for sequential? to mean "preserves the order of insertion?" which vectors do (expect true), lists do in reverse (expect -true), and sets and maps never do (expect false). (edited)
 
 dgb23
-  1 hour ago
 Sequential is an empty interface. I think it's just a signal that is put on certain implementations.
 * associative?
 :PROPERTIES:
@@ -510,7 +509,7 @@ clojure.core/sequence
  :SORTED-MAP: get, IFn, key
 :END:
 
-list - You cannot use the get function with a list to retrieve by index.
+You cannot use the get function with a list to retrieve by index.
 * get  
 :PROPERTIES:
 :list:     nil
@@ -646,7 +645,7 @@ error unless the first item of the list can be invoked as a function.
 :END:
 ([coll index] [coll index not-found]) throws an exception unless not-found is supplied
 
-using nth to retrieve an element from a list is slower than using get to retrieve an element from a vector.
+Using nth to retrieve an element from a list is slower than using get to retrieve an element from a vector.
 #+begin_src clojure
   (nth (list :a :b) 0) ;=> :a
   (nth (list :a :b) 1) ;=> :b
@@ -703,8 +702,7 @@ using nth to retrieve an element from a list is slower than using get to retriev
 :END:
 
 #+begin_src clojure
-(conj [1 2 3] 4)
-; => [1 2 3 4]
+(conj [1 2 3] 4) ; => [1 2 3 4]
 #+end_src
 
 * cons (seq)

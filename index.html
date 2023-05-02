@@ -1,0 +1,1241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-05-02 Tue 20:23 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Sławomir Grochowski" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<style type="text/css">body{ max-width:50%; }</style>
+</head>
+<body>
+<div id="content" class="content">
+<p>
+legend:
+</p>
+<ul class="org-ul">
+<li>'data' means minimal data provided e.g (list 1), (vector 1), (hash-map :a 1)</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">item</th>
+<th scope="col" class="org-left">list</th>
+<th scope="col" class="org-left">vector</th>
+<th scope="col" class="org-left">hash-set</th>
+<th scope="col" class="org-left">sorted-set</th>
+<th scope="col" class="org-left">hash-map</th>
+<th scope="col" class="org-left">sorted-map</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">"literal syntax"</td>
+<td class="org-left">()</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">#{}</td>
+<td class="org-left">#{}</td>
+<td class="org-left">{}</td>
+<td class="org-left">{}</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">create from args</td>
+<td class="org-left">(list 1 2 3)</td>
+<td class="org-left">(vector 1 2 3)</td>
+<td class="org-left">(hash-set 2 3 1)</td>
+<td class="org-left">(sorted-set 1 2 3)</td>
+<td class="org-left">(hash-map :b 2 :c 3 :a 1)</td>
+<td class="org-left">(sorted-map :a 1 :b 2 :c 3)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">create from collection</td>
+<td class="org-left">?</td>
+<td class="org-left">(vec '(1 2 3))</td>
+<td class="org-left">(set '(2 3 1))</td>
+<td class="org-left">?</td>
+<td class="org-left">?</td>
+<td class="org-left">(into (sorted-map) {:a 1 :b 2 :c 3})</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">coll?</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">sequential?</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">associative?</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">type</td>
+<td class="org-left">PersistentList$EmptyList</td>
+<td class="org-left">PersistentVector</td>
+<td class="org-left">PersistentHashSet</td>
+<td class="org-left">PersistentTreeSet</td>
+<td class="org-left">PersistentArrayMap</td>
+<td class="org-left">PersistentTreeMap</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">type data</td>
+<td class="org-left">PersistentList</td>
+<td class="org-left">PersistentVector</td>
+<td class="org-left">PersistentHashSet</td>
+<td class="org-left">PersistentTreeSet</td>
+<td class="org-left">PersistentArrayMap</td>
+<td class="org-left">PersistentTreeMap</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">list?</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">vector?</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">set?</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">map?</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">seq?</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">seq? data</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">seq? seq</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">seq? seq data</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">type seq</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">type sequence</td>
+<td class="org-left">PersistentList$EmptyList</td>
+<td class="org-left">PersistentList$EmptyList</td>
+<td class="org-left">PersistentList$EmptyList</td>
+<td class="org-left">PersistentList$EmptyList</td>
+<td class="org-left">PersistentList$EmptyList</td>
+<td class="org-left">PersistentList$EmptyList</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">type seq data</td>
+<td class="org-left">PersistentList</td>
+<td class="org-left">PersistentVector$ChunkedSeq</td>
+<td class="org-left">APersistentMap$KeySeq</td>
+<td class="org-left">APersistentMap$KeySeq</td>
+<td class="org-left">PersistentHashMap$NodeSeq</td>
+<td class="org-left">PersistentTreeMap$Seq</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">type sequence data</td>
+<td class="org-left">PersistentList</td>
+<td class="org-left">PersistentVector$ChunkedSeq</td>
+<td class="org-left">APersistentMap$KeySeq</td>
+<td class="org-left">APersistentMap$KeySeq</td>
+<td class="org-left">PersistentHashMap$NodeSeq</td>
+<td class="org-left">PersistentTreeMap$Seq</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">"unique elements"</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X] only keys</td>
+<td class="org-left">[X] only keys</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">"same order of elements"</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[ ]</td>
+<td class="org-left">[X]</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">"read"</td>
+<td class="org-left">nth</td>
+<td class="org-left">get, IFn, nth</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">get, IFn, key</td>
+<td class="org-left">get, IFn, key</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">get</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">get data</td>
+<td class="org-left">nil</td>
+<td class="org-left">[X] index</td>
+<td class="org-left">useless</td>
+<td class="org-left">useless</td>
+<td class="org-left">[X] key</td>
+<td class="org-left">[X] key</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">get nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">get out of range</td>
+<td class="org-left">nil or not-found</td>
+<td class="org-left">nil or not-found</td>
+<td class="org-left">nil or not-found</td>
+<td class="org-left">nil or not-found</td>
+<td class="org-left">nil or not-found</td>
+<td class="org-left">nil or not-found</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">IFn</td>
+<td class="org-left">error</td>
+<td class="org-left">([:a :b :c] 1) =&gt; :b</td>
+<td class="org-left">error</td>
+<td class="org-left">error</td>
+<td class="org-left">({:b 2 :c 3 :a 1} :b) =&gt; 2</td>
+<td class="org-left">({:a 1 :b 2 :c 3} :a) =&gt; 1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">IFn out of range</td>
+<td class="org-left">error</td>
+<td class="org-left">error</td>
+<td class="org-left">error</td>
+<td class="org-left">error</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">nth</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">[X]</td>
+<td class="org-left">{X]</td>
+<td class="org-left">error</td>
+<td class="org-left">error</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">nth nil</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">nil</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">nth out of range</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">"add"</td>
+<td class="org-left">cons, conj</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">assoc</td>
+<td class="org-left">assoc</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">conj (coll)</td>
+<td class="org-left">front</td>
+<td class="org-left">back</td>
+<td class="org-left">vary</td>
+<td class="org-left">vary</td>
+<td class="org-left">vary</td>
+<td class="org-left">vary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">cons (seq)</td>
+<td class="org-left">front</td>
+<td class="org-left">front</td>
+<td class="org-left">vary</td>
+<td class="org-left">vary</td>
+<td class="org-left">vary</td>
+<td class="org-left">vary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">"remove"</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">disj</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">dissoc</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">contains?</td>
+<td class="org-left">error</td>
+<td class="org-left">[X] index</td>
+<td class="org-left">[X] element</td>
+<td class="org-left">[X] element</td>
+<td class="org-left">[X] key</td>
+<td class="org-left">[X] key</td>
+</tr>
+</tbody>
+</table>
+
+<div id="outline-container-orgf79af3a" class="outline-2">
+<h2 id="orgf79af3a"><span class="section-number-2">1.</span> "literal syntax"</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-clojure">(type '()) <span style="color: #696969;">;=&gt; PersistentList$EmptyList</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6ba893d" class="outline-2">
+<h2 id="org6ba893d"><span class="section-number-2">2.</span> create from args</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+</div>
+<div id="outline-container-org3cc3974" class="outline-2">
+<h2 id="org3cc3974"><span class="section-number-2">3.</span> create from collection</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+</div>
+<div id="outline-container-org2a575fc" class="outline-2">
+<h2 id="org2a575fc"><span class="section-number-2">4.</span> coll?</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-clojure">(coll? (list)) <span style="color: #696969;">; =&gt; true</span>
+(coll? (vector))  <span style="color: #696969;">; =&gt; true</span>
+(coll? (hash-set)) <span style="color: #696969;">; =&gt; true</span>
+(coll? (sorted-set))  <span style="color: #696969;">; =&gt; true</span>
+(coll? (hash-map)) <span style="color: #696969;">; =&gt; true</span>
+(coll? (sorted-map))  <span style="color: #696969;">; =&gt; true</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8069934" class="outline-2">
+<h2 id="org8069934"><span class="section-number-2">5.</span> sequential?</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Returns true if coll implements Sequential
+</p>
+
+<p>
+Definitions from Oxford Languages: sequential - forming or following in a logical order or sequence.
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(sequential? (list)) <span style="color: #696969;">;=&gt; true</span>
+(sequential? (vector)) <span style="color: #696969;">;=&gt; true</span>
+(sequential? (hash-set)) <span style="color: #696969;">;=&gt; false</span>
+(sequential? (sorted-set)) <span style="color: #696969;">;=&gt; false</span>
+(sequential? (hash-map)) <span style="color: #696969;">;=&gt; false</span>
+(sequential? (sorted-map)) <span style="color: #696969;">;=&gt; false</span>
+</pre>
+</div>
+
+<p>
+I was thinking that sorted-set &amp; sorted-map are (= sequential? true)
+They have logical order (they are sorted) so why they are not sequential?
+</p>
+
+<p>
+dgb23
+hashed collections have sequence representations (map entries) that are sequential.
+I think it is more of an implementation thing. In theory you're right, they are both sequential and hashed collections.
+</p>
+
+<p>
+phill
+The sequential? docstring tells me nothing about what it does! I do not see a basis for expectation of any particular return value. It would be a good question for ask.clojure.org so it might get clarified.
+However, it would be normal for sequential? to mean "preserves the order of insertion?" which vectors do (expect true), lists do in reverse (expect -true), and sets and maps never do (expect false). (edited)
+</p>
+
+<p>
+dgb23
+Sequential is an empty interface. I think it's just a signal that is put on certain implementations.
+</p>
+</div>
+</div>
+<div id="outline-container-org6c56a91" class="outline-2">
+<h2 id="org6c56a91"><span class="section-number-2">6.</span> associative?</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Returns true if coll implements Associative
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(associative? (list)) <span style="color: #696969;">;=&gt; false</span>
+(associative? (vector)) <span style="color: #696969;">;=&gt; true</span>
+(associative? (hash-set)) <span style="color: #696969;">;=&gt; false</span>
+(associative? (sorted-set)) <span style="color: #696969;">;=&gt; false</span>
+(associative? (hash-map)) <span style="color: #696969;">;=&gt; true</span>
+(associative? (sorted-map)) <span style="color: #696969;">;=&gt; true</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5d44f8f" class="outline-2">
+<h2 id="org5d44f8f"><span class="section-number-2">7.</span> type</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Returns the :type metadata of x, or its Class if none
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(type (list)) <span style="color: #696969;">;=&gt; Persistentlist$EmptyList</span>
+(type (vector)) <span style="color: #696969;">;=&gt; PersistentVector</span>
+(type (hash-set)) <span style="color: #696969;">;=&gt; PersistentHashSet</span>
+(type (sorted-set)) <span style="color: #696969;">;=&gt; PersistentTreeSet</span>
+(type (hash-map)) <span style="color: #696969;">;=&gt; PersistentArrayMap</span>
+(type (sorted-map)) <span style="color: #696969;">;=&gt; PersistentTreeMap</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0110584" class="outline-2">
+<h2 id="org0110584"><span class="section-number-2">8.</span> type data</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-clojure">(type (list 1)) <span style="color: #696969;">;=&gt; Persistentlist</span>
+(type (vector 1)) <span style="color: #696969;">;=&gt; PersistentVector</span>
+(type (hash-set 1)) <span style="color: #696969;">;=&gt; PersistentHashSet</span>
+(type (sorted-set 1)) <span style="color: #696969;">;=&gt; PersistentTreeSet</span>
+(type (hash-map <span style="color: #d2a6ff;">:a</span> 1)) <span style="color: #696969;">;=&gt; PersistentHashMap</span>
+(type (sorted-map <span style="color: #d2a6ff;">:a</span> 1)) <span style="color: #696969;">;=&gt; PersistentTreeMap</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5eb3c4d" class="outline-2">
+<h2 id="org5eb3c4d"><span class="section-number-2">9.</span> list?</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Returns true if x implements IPersistentlist
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(list? (list)) <span style="color: #696969;">;=&gt; true</span>
+(list? (vector)) <span style="color: #696969;">;=&gt; false</span>
+(list? (hash-set)) <span style="color: #696969;">;=&gt; false</span>
+(list? (sorted-set)) <span style="color: #696969;">;=&gt; false</span>
+(list? (hash-map)) <span style="color: #696969;">;=&gt; false</span>
+(list? (sorted-map)) <span style="color: #696969;">;=&gt; false</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfeaf198" class="outline-2">
+<h2 id="orgfeaf198"><span class="section-number-2">10.</span> vector?</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Return true if x implements IPersistentVector
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(vector? (list)) <span style="color: #696969;">;=&gt; false</span>
+(vector? (vector)) <span style="color: #696969;">;=&gt; true</span>
+(vector? (hash-set)) <span style="color: #696969;">;=&gt; false</span>
+(vector? (sorted-set)) <span style="color: #696969;">;=&gt; false</span>
+(vector? (hash-map)) <span style="color: #696969;">;=&gt; false</span>
+(vector? (sorted-map)) <span style="color: #696969;">;=&gt; false</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbd22e22" class="outline-2">
+<h2 id="orgbd22e22"><span class="section-number-2">11.</span> set?</h2>
+<div class="outline-text-2" id="text-11">
+<div class="org-src-container">
+<pre class="src src-clojure">(set? (list)) <span style="color: #696969;">;=&gt; false</span>
+(set? (vector)) <span style="color: #696969;">;=&gt; false</span>
+(set? (hash-set)) <span style="color: #696969;">;=&gt; true</span>
+(set? (sorted-set)) <span style="color: #696969;">;=&gt; true</span>
+(set? (hash-map)) <span style="color: #696969;">;=&gt; false</span>
+(set? (sorted-map)) <span style="color: #696969;">;=&gt; false</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdb63138" class="outline-2">
+<h2 id="orgdb63138"><span class="section-number-2">12.</span> map?</h2>
+<div class="outline-text-2" id="text-12">
+<div class="org-src-container">
+<pre class="src src-clojure">(map? (list)) <span style="color: #696969;">;=&gt; false</span>
+(map? (vector)) <span style="color: #696969;">;=&gt; false</span>
+(map? (hash-set)) <span style="color: #696969;">;=&gt; false</span>
+(map? (sorted-set)) <span style="color: #696969;">;=&gt; false</span>
+(map? (hash-map)) <span style="color: #696969;">;=&gt; true</span>
+(map? (sorted-map)) <span style="color: #696969;">;=&gt; true</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcdfc7a7" class="outline-2">
+<h2 id="orgcdfc7a7"><span class="section-number-2">13.</span> seq?</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+Return true if x implements ISeq
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(seq? (list)) <span style="color: #696969;">;=&gt; true</span>
+(seq? (vector)) <span style="color: #696969;">;=&gt; false</span>
+(seq? (hash-set)) <span style="color: #696969;">;=&gt; false</span>
+(seq? (sorted-set)) <span style="color: #696969;">;=&gt; false</span>
+(seq? (hash-map)) <span style="color: #696969;">;=&gt; false</span>
+(seq? (sorted-map)) <span style="color: #696969;">;=&gt; false</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org50fa72c" class="outline-2">
+<h2 id="org50fa72c"><span class="section-number-2">14.</span> seq? data</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+Return true if x implements ISeq
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(seq? (list 1)) <span style="color: #696969;">;=&gt; true</span>
+(seq? (vector 1)) <span style="color: #696969;">;=&gt; false</span>
+(seq? (hash-set 1)) <span style="color: #696969;">;=&gt; false</span>
+(seq? (sorted-set 1)) <span style="color: #696969;">;=&gt; false</span>
+(seq? (hash-map <span style="color: #d2a6ff;">:a</span> 1)) <span style="color: #696969;">;=&gt; false</span>
+(seq? (sorted-map <span style="color: #d2a6ff;">:a</span> 1)) <span style="color: #696969;">;=&gt; false</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge7448ce" class="outline-2">
+<h2 id="orge7448ce"><span class="section-number-2">15.</span> seq? seq</h2>
+<div class="outline-text-2" id="text-15">
+<div class="org-src-container">
+<pre class="src src-clojure">(seq? (seq (list))) <span style="color: #696969;">;=&gt; false</span>
+(seq? (seq (vector))) <span style="color: #696969;">;=&gt; false</span>
+(seq? (seq (hash-set))) <span style="color: #696969;">;=&gt; false</span>
+(seq? (seq (sorted-set))) <span style="color: #696969;">;=&gt; false</span>
+(seq? (seq (hash-map))) <span style="color: #696969;">;=&gt; false</span>
+(seq? (seq (sorted-map))) <span style="color: #696969;">;=&gt; false</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb59bb69" class="outline-2">
+<h2 id="orgb59bb69"><span class="section-number-2">16.</span> seq? seq data</h2>
+<div class="outline-text-2" id="text-16">
+<div class="org-src-container">
+<pre class="src src-clojure">(seq? (seq (list 1))) <span style="color: #696969;">;=&gt; true</span>
+(seq? (seq (vector 1))) <span style="color: #696969;">;=&gt; true</span>
+(seq? (seq (hash-set 1))) <span style="color: #696969;">;=&gt; true</span>
+(seq? (seq (sorted-set 1))) <span style="color: #696969;">;=&gt; true</span>
+(seq? (seq (hash-map <span style="color: #d2a6ff;">:a</span> 1))) <span style="color: #696969;">;=&gt; true</span>
+(seq? (seq (sorted-map <span style="color: #d2a6ff;">:a</span> 1))) <span style="color: #696969;">;=&gt; true</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb94afdb" class="outline-2">
+<h2 id="orgb94afdb"><span class="section-number-2">17.</span> type seq</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+clojure.core/seq
+([coll])
+</p>
+
+<p>
+Returns a seq on the collection. If the collection is
+empty, returns nil.  (seq nil) returns nil. seq also works on
+Strings, native Java arrays (of reference types) and any objects
+that implement Iterable. Note that seqs cache values, thus seq
+should not be used on any Iterable whose iterator repeatedly
+returns the same mutable object.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(seq (list)) <span style="color: #696969;">;=&gt; nil</span>
+(seq (vector)) <span style="color: #696969;">;=&gt; nil</span>
+(seq (hash-set)) <span style="color: #696969;">;=&gt; nil</span>
+(seq (sorted-set)) <span style="color: #696969;">;=&gt; nil</span>
+(seq (hash-map)) <span style="color: #696969;">;=&gt; nil</span>
+(seq (sorted-map)) <span style="color: #696969;">;=&gt; nil</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2126b16" class="outline-2">
+<h2 id="org2126b16"><span class="section-number-2">18.</span> type sequence</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+clojure.core/sequence
+([coll] [xform coll] [xform coll &amp; colls])
+  Coerces coll to a (possibly empty) sequence, if it is not already
+  one. Will not force a lazy seq. (sequence nil) yields (), When a
+  transducer is supplied, returns a lazy sequence of applications of
+  the transform to the items in coll(s), i.e. to the set of first
+  items of each coll, followed by the set of second
+  items in each coll, until any one of the colls is exhausted.  Any
+  remaining items in other colls are ignored. The transform should accept
+  number-of-colls arguments
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(type (sequence (list))) <span style="color: #696969;">;=&gt; PersistentList$Emptylist</span>
+(type (sequence (vector))) <span style="color: #696969;">;=&gt; PersistentList$Emptylist</span>
+(type (sequence (hash-set))) <span style="color: #696969;">;=&gt; PersistentList$Emptylist</span>
+(type (sequence (sorted-set))) <span style="color: #696969;">;=&gt; PersistentList$Emptylist</span>
+(type (sequence (hash-map))) <span style="color: #696969;">;=&gt; PersistentList$Emptylist</span>
+(type (sequence (sorted-map))) <span style="color: #696969;">;=&gt; PersistentList$Emptylist</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org253a97d" class="outline-2">
+<h2 id="org253a97d"><span class="section-number-2">19.</span> type seq data</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+clojure.core/seq
+([coll])
+</p>
+
+<p>
+Returns a seq on the collection. If the collection is
+empty, returns nil.  (seq nil) returns nil. seq also works on
+Strings, native Java arrays (of reference types) and any objects
+that implement Iterable. Note that seqs cache values, thus seq
+should not be used on any Iterable whose iterator repeatedly
+returns the same mutable object.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(type (seq (list 1))) <span style="color: #696969;">;=&gt; Persistentlist</span>
+(type (seq (vector 1))) <span style="color: #696969;">;=&gt; PersistentVector$ChunkedSeq</span>
+(type (seq (hash-set 1))) <span style="color: #696969;">;=&gt; APersistentMap$KeySeq</span>
+(type (seq (sorted-set 1))) <span style="color: #696969;">;=&gt; APersistentMap$KeySeq</span>
+(type (seq (hash-map <span style="color: #d2a6ff;">:a</span> 1))) <span style="color: #696969;">;=&gt; PersistentHashMap$NodeSeq</span>
+(type (seq (sorted-map <span style="color: #d2a6ff;">:a</span> 1))) <span style="color: #696969;">;=&gt; PersistentTreeMap$Seq</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgefa8a81" class="outline-2">
+<h2 id="orgefa8a81"><span class="section-number-2">20.</span> type sequence data</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+clojure.core/sequence
+([coll] [xform coll] [xform coll &amp; colls])
+  Coerces coll to a (possibly empty) sequence, if it is not already
+  one. Will not force a lazy seq. (sequence nil) yields (), When a
+  transducer is supplied, returns a lazy sequence of applications of
+  the transform to the items in coll(s), i.e. to the set of first
+  items of each coll, followed by the set of second
+  items in each coll, until any one of the colls is exhausted.  Any
+  remaining items in other colls are ignored. The transform should accept
+  number-of-colls arguments
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(type (sequence (list 1))) <span style="color: #696969;">;=&gt; PersistentList</span>
+(type (sequence (vector 1))) <span style="color: #696969;">;=&gt; PersistentVector$ChunkedSequence</span>
+(type (sequence (hash-set 1))) <span style="color: #696969;">;=&gt; APersistentMap$KeySequence</span>
+(type (sequence (sorted-set 1))) <span style="color: #696969;">;=&gt; APersistentMap$KeySequence</span>
+(type (sequence (hash-map <span style="color: #d2a6ff;">:a</span> 1))) <span style="color: #696969;">;=&gt; PersistentHashMap$NodeSequence</span>
+(type (sequence (sorted-map <span style="color: #d2a6ff;">:a</span> 1))) <span style="color: #696969;">;=&gt; PersistentTreeMap$Sequence</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org08c6a71" class="outline-2">
+<h2 id="org08c6a71"><span class="section-number-2">21.</span> "unique elements"</h2>
+<div class="outline-text-2" id="text-21">
+</div>
+</div>
+<div id="outline-container-orgebc7f3a" class="outline-2">
+<h2 id="orgebc7f3a"><span class="section-number-2">22.</span> "same order of elements"</h2>
+<div class="outline-text-2" id="text-22">
+</div>
+</div>
+<div id="outline-container-org11c11da" class="outline-2">
+<h2 id="org11c11da"><span class="section-number-2">23.</span> "read"</h2>
+<div class="outline-text-2" id="text-23">
+<p>
+You cannot use the get function with a list to retrieve by index.
+</p>
+</div>
+</div>
+<div id="outline-container-orgad8a8fa" class="outline-2">
+<h2 id="orgad8a8fa"><span class="section-number-2">24.</span> get</h2>
+<div class="outline-text-2" id="text-24">
+<p>
+([map key] [map key not-found])
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">(get (list) 0) <span style="color: #696969;">;=&gt; nil</span>
+(get (vector) 0) <span style="color: #696969;">;=&gt; nil</span>
+(get (hash-set) 0) <span style="color: #696969;">;=&gt; nil</span>
+(get (sorted-set) 0) <span style="color: #696969;">;=&gt; nil</span>
+(get (hash-map) <span style="color: #d2a6ff;">:a</span>) <span style="color: #696969;">;=&gt; nil</span>
+(get (sorted-map) <span style="color: #d2a6ff;">:a</span>) <span style="color: #696969;">;=&gt; nil</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbbd729a" class="outline-2">
+<h2 id="orgbbd729a"><span class="section-number-2">25.</span> get data</h2>
+<div class="outline-text-2" id="text-25">
+<p>
+([map key] [map key not-found])
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"> (get (list <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 0) <span style="color: #696969;">;=&gt; nil</span>
+ (get (list <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) <span style="color: #d2a6ff;">:a</span>) <span style="color: #696969;">;=&gt; nil</span>
+ (get (list <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) <span style="color: #6C8A56;">"string"</span>) <span style="color: #696969;">;=&gt; nil</span>
+<span style="color: #696969;">; </span><span style="color: #696969;">Although lists are sequences, they are not keyed sequences.</span>
+
+ (get (vector <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 0) <span style="color: #696969;">;=&gt; :a</span>
+ (get (vector <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 1) <span style="color: #696969;">;=&gt; :b</span>
+
+ (get (hash-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 0) <span style="color: #696969;">;=&gt; nil</span>
+ (get (hash-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 1) <span style="color: #696969;">;=&gt; nil</span>
+ (get (hash-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) <span style="color: #d2a6ff;">:a</span>) <span style="color: #696969;">;=&gt; :a</span>
+ (get (hash-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) <span style="color: #6C8A56;">"string"</span>) <span style="color: #696969;">;=&gt; nil</span>
+
+ (get (sorted-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 0) <span style="color: #696969;">;=&gt; Unhandled java.lang.ClassCastException</span>
+ (get (sorted-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 1) <span style="color: #696969;">;=&gt; Unhandled java.lang.ClassCastException</span>
+ (get (sorted-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) <span style="color: #6C8A56;">"string"</span>) <span style="color: #696969;">;=&gt; Unhandled java.lang.ClassCastException</span>
+ (get (sorted-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) <span style="color: #d2a6ff;">:a</span>) <span style="color: #696969;">;=&gt; :a</span>
+ (get (sorted-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) <span style="color: #d2a6ff;">:b</span>) <span style="color: #696969;">;=&gt; :a</span>
+
+ (get (hash-map <span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2) <span style="color: #d2a6ff;">:a</span>) <span style="color: #696969;">;=&gt; 1</span>
+ (get (hash-map <span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2) 1) <span style="color: #696969;">;=&gt; nil</span>
+ (get (sorted-map <span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2) <span style="color: #d2a6ff;">:a</span>) <span style="color: #696969;">;=&gt; 1</span>
+ (get (sorted-map <span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2) 1) <span style="color: #696969;">;=&gt; ;=&gt; Unhandled java.lang.ClassCastException</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org291d5ce" class="outline-2">
+<h2 id="org291d5ce"><span class="section-number-2">26.</span> get nil</h2>
+<div class="outline-text-2" id="text-26">
+<div class="org-src-container">
+<pre class="src src-clojure">(get <span style="color: #d2a6ff;">nil</span> 0) <span style="color: #696969;">; =&gt; nil</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge0ee23f" class="outline-2">
+<h2 id="orge0ee23f"><span class="section-number-2">27.</span> get out of range</h2>
+<div class="outline-text-2" id="text-27">
+</div>
+</div>
+<div id="outline-container-org97f1120" class="outline-2">
+<h2 id="org97f1120"><span class="section-number-2">28.</span> IFn</h2>
+<div class="outline-text-2" id="text-28">
+<div class="org-src-container">
+<pre class="src src-clojure">('(1 2 3) 1) <span style="color: #696969;">; class clojure.lang.PersistentList cannot be cast to class clojure.lang.IFn (clojure.lang.PersistentList and clojure.lang.IFn</span>
+
+([1 2 3] 1) <span style="color: #696969;">;=&gt; 2</span>
+
+(#(1 2 3) 2) <span style="color: #696969;">;=&gt; error</span>
+</pre>
+</div>
+
+<p>
+'IFn' means 'Interface Function'.
+Keywords also have this interface. In the preceding examples, we can see that a list that is not quoted with ' throws an
+error unless the first item of the list can be invoked as a function.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">({<span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2 <span style="color: #d2a6ff;">:c</span> 3} <span style="color: #d2a6ff;">:a</span>)<span style="color: #696969;">; =&gt; 1 | maps are functions of their keys</span>
+(<span style="color: #d2a6ff;">:a</span> {<span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2 <span style="color: #d2a6ff;">:c</span> 3}) <span style="color: #696969;">; =&gt; 1 | keywords are also functions</span>
+
+(1 [<span style="color: #d2a6ff;">:b</span> <span style="color: #d2a6ff;">:c</span> <span style="color: #d2a6ff;">:a</span>]) <span style="color: #696969;">;=&gt; error</span>
+([<span style="color: #d2a6ff;">:b</span> <span style="color: #d2a6ff;">:c</span> <span style="color: #d2a6ff;">:a</span>] 1) <span style="color: #696969;">;=&gt; :c</span>
+(<span style="color: #d2a6ff;">:c</span> [<span style="color: #d2a6ff;">:b</span> <span style="color: #d2a6ff;">:c</span> <span style="color: #d2a6ff;">:a</span>]) <span style="color: #696969;">;=&gt; nil</span>
+
+(<span style="color: #d2a6ff;">nil</span> 0) <span style="color: #696969;">; =&gt; IllegalArgumentException</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb1f6d54" class="outline-2">
+<h2 id="orgb1f6d54"><span class="section-number-2">29.</span> IFn out of range</h2>
+<div class="outline-text-2" id="text-29">
+<div class="org-src-container">
+<pre class="src src-clojure">([<span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>] 2) <span style="color: #696969;">;=&gt; IndexOutOfBoundsException</span>
+({<span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2} <span style="color: #d2a6ff;">:c</span>)<span style="color: #696969;">; =&gt; nil</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd7de2b1" class="outline-2">
+<h2 id="orgd7de2b1"><span class="section-number-2">30.</span> nth</h2>
+<div class="outline-text-2" id="text-30">
+<p>
+([coll index] [coll index not-found]) throws an exception unless not-found is supplied
+</p>
+
+<p>
+Using nth to retrieve an element from a list is slower than using get to retrieve an element from a vector.
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">(nth (list <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 0) <span style="color: #696969;">;=&gt; :a</span>
+(nth (list <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 1) <span style="color: #696969;">;=&gt; :b</span>
+(nth (list <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 3) <span style="color: #696969;">;=&gt; Unhandled java.lang.IndexOutOfBoundsException</span>
+
+(nth (vector <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 0) <span style="color: #696969;">;=&gt; :a</span>
+(nth (vector <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 1) <span style="color: #696969;">;=&gt; :b</span>
+
+(nth (hash-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 0) <span style="color: #696969;">;=&gt; Unhandled java.lang.UnsupportedOperationException</span>
+
+(nth (sorted-set <span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>) 0) <span style="color: #696969;">;=&gt; Unhandled java.lang.UnsupportedOperationException</span>
+
+(nth (hash-map <span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2) 0) <span style="color: #696969;">;=&gt; Unhandled java.lang.UnsupportedOperationException</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4cf98b8" class="outline-2">
+<h2 id="org4cf98b8"><span class="section-number-2">31.</span> nth nil</h2>
+<div class="outline-text-2" id="text-31">
+<div class="org-src-container">
+<pre class="src src-clojure">(nth <span style="color: #d2a6ff;">nil</span> 0) <span style="color: #696969;">; =&gt; nil</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc83b771" class="outline-2">
+<h2 id="orgc83b771"><span class="section-number-2">32.</span> nth out of range</h2>
+<div class="outline-text-2" id="text-32">
+<div class="org-src-container">
+<pre class="src src-clojure">
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d623a5" class="outline-2">
+<h2 id="org2d623a5"><span class="section-number-2">33.</span> "add"</h2>
+<div class="outline-text-2" id="text-33">
+</div>
+</div>
+<div id="outline-container-org34250a5" class="outline-2">
+<h2 id="org34250a5"><span class="section-number-2">34.</span> conj (coll)</h2>
+<div class="outline-text-2" id="text-34">
+<div class="org-src-container">
+<pre class="src src-clojure">(conj [1 2 3] 4) <span style="color: #696969;">; =&gt; [1 2 3 4]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org40420a4" class="outline-2">
+<h2 id="org40420a4"><span class="section-number-2">35.</span> cons (seq)</h2>
+<div class="outline-text-2" id="text-35">
+<div class="org-src-container">
+<pre class="src src-clojure">(cons <span style="color: #6C8A56;">"two"</span> (list <span style="color: #6C8A56;">"first"</span>)) <span style="color: #696969;">;=&gt; ("two" "first")</span>
+(cons <span style="color: #6C8A56;">"two"</span> (vector <span style="color: #6C8A56;">"first"</span>))  <span style="color: #696969;">;=&gt; ("two" "first")</span>
+(cons <span style="color: #6C8A56;">"two"</span> (hash-set <span style="color: #6C8A56;">"first"</span>))  <span style="color: #696969;">;=&gt; ("two" "first")</span>
+(cons <span style="color: #6C8A56;">"two"</span> (sorted-set <span style="color: #6C8A56;">"first"</span>))  <span style="color: #696969;">;=&gt; ("two" "first")</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5ee514d" class="outline-2">
+<h2 id="org5ee514d"><span class="section-number-2">36.</span> "remove"</h2>
+<div class="outline-text-2" id="text-36">
+</div>
+</div>
+<div id="outline-container-orgdec6129" class="outline-2">
+<h2 id="orgdec6129"><span class="section-number-2">37.</span> contains?</h2>
+<div class="outline-text-2" id="text-37">
+<div class="org-src-container">
+<pre class="src src-clojure">#+begin_src clojure
+(contains? '(1 2 4 3) 4)
+<span style="color: #696969;">;</span><span style="color: #696969;">=&gt; IllegalArgumentException</span>
+
+(contains? [1 2 3 4] 0) <span style="color: #696969;">;=&gt; true</span>
+(contains? [1 2 3 4] 4) <span style="color: #696969;">;=&gt; false</span>
+
+(contains? #{1 2 3 4} 0) <span style="color: #696969;">;=&gt; false</span>
+(contains? #{1 2 3 4} 4) <span style="color: #696969;">;=&gt; true</span>
+
+(contains? {<span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2} <span style="color: #d2a6ff;">:a</span>) <span style="color: #696969;">;=&gt; true</span>
+(contains? {<span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2} 1) <span style="color: #696969;">;=&gt; true</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sławomir Grochowski</p>
+<p class="date">Created: 2023-05-02 Tue 20:23</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
