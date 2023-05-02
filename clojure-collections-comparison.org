@@ -1,0 +1,758 @@
+#+COLUMNS: %34ITEM(item) %25LIST(list) %28VECTOR(vector) %24HASH-SET(hash-set) %24SORTED-SET(sorted-set) %27HASH-MAP(hash-map) %37SORTED-MAP(sorted-map)
+
+legend:
+- 'data' means minimal data provided e.g (list 1), (vector 1), (hash-map :a 1)
+
+#+BEGIN: columnview :hlines 1 :id global
+| item                     | list                     | vector                      | hash-set                 | sorted-set               | hash-map                   | sorted-map                           |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| "literal syntax"         | ()                       | [ ]                         | #{}                      | #{}                      | {}                         | {}                                   |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| create from args         | (list 1 2 3)             | (vector 1 2 3)              | (hash-set 2 3 1)         | (sorted-set 1 2 3)       | (hash-map :b 2 :c 3 :a 1)  | (sorted-map :a 1 :b 2 :c 3)          |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| create from collection   | ?                        | (vec '(1 2 3))              | (set '(2 3 1))           | ?                        | ?                          | (into (sorted-map) {:a 1 :b 2 :c 3}) |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| coll?                    | [X]                      | [X]                         | [X]                      | [X]                      | [X]                        | [X]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| sequential?              | [X]                      | [X]                         | [ ]                      | [ ]                      | [ ]                        | [ ]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| associative?             | [ ]                      | [X]                         | [ ]                      | [ ]                      | [X]                        | [X]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| type                     | PersistentList$EmptyList | PersistentVector            | PersistentHashSet        | PersistentTreeSet        | PersistentArrayMap         | PersistentTreeMap                    |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| type data                | PersistentList           | PersistentVector            | PersistentHashSet        | PersistentTreeSet        | PersistentArrayMap         | PersistentTreeMap                    |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| list?                    | [X]                      | [ ]                         | [ ]                      | [ ]                      | [ ]                        | [ ]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| vector?                  | [ ]                      | [X]                         | [ ]                      | [ ]                      | [ ]                        | [ ]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| set?                     | [ ]                      | [ ]                         | [X]                      | [X]                      | [ ]                        | [ ]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| map?                     | [ ]                      | [ ]                         | [ ]                      | [ ]                      | [X]                        | [X]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| seq?                     | [X]                      | [ ]                         | [ ]                      | [ ]                      | [ ]                        | [ ]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| seq? data                | [X]                      | [ ]                         | [ ]                      | [ ]                      | [ ]                        | [ ]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| seq? seq                 | [ ]                      | [ ]                         | [ ]                      | [ ]                      | [ ]                        | [ ]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| seq? seq data            | [X]                      | [X]                         | [X]                      | [X]                      | [X]                        | [X]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| type seq                 | nil                      | nil                         | nil                      | nil                      | nil                        | nil                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| type sequence            | PersistentList$EmptyList | PersistentList$EmptyList    | PersistentList$EmptyList | PersistentList$EmptyList | PersistentList$EmptyList   | PersistentList$EmptyList             |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| type seq data            | PersistentList           | PersistentVector$ChunkedSeq | APersistentMap$KeySeq    | APersistentMap$KeySeq    | PersistentHashMap$NodeSeq  | PersistentTreeMap$Seq                |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| type sequence data       | PersistentList           | PersistentVector$ChunkedSeq | APersistentMap$KeySeq    | APersistentMap$KeySeq    | PersistentHashMap$NodeSeq  | PersistentTreeMap$Seq                |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| "unique elements"        | [ ]                      | [ ]                         | [X]                      | [X]                      | [X] only keys              | [X] only keys                        |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| "same order of elements" | [X]                      | [X]                         | [ ]                      | [X]                      | [ ]                        | [X]                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| "read"                   | nth                      | get, IFn, nth               |                          |                          | get, IFn, key              | get, IFn, key                        |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| get                      | nil                      | nil                         | nil                      | nil                      | nil                        | nil                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| get data                 | nil                      | [X] index                   | useless                  | useless                  | [X] key                    | [X] key                              |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| get nil                  | nil                      | nil                         | nil                      | nil                      | nil                        | nil                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| get out of range         | nil or not-found         | nil or not-found            | nil or not-found         | nil or not-found         | nil or not-found           | nil or not-found                     |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| IFn                      | error                    | ([:a :b :c] 1) => :b        | error                    | error                    | ({:b 2 :c 3 :a 1} :b) => 2 | ({:a 1 :b 2 :c 3} :a) => 1           |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| IFn out of range         | error                    | error                       | error                    | error                    | nil                        | nil                                  |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| nth                      | [X]                      | [X]                         | [X]                      | {X]                      | error                      | error                                |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| nth nil                  |                          | nil                         |                          |                          |                            |                                      |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| nth out of range         |                          |                             |                          |                          |                            |                                      |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| "add"                    | cons, conj               |                             |                          |                          | assoc                      | assoc                                |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| conj (coll)              | front                    | back                        | vary                     | vary                     | vary                       | vary                                 |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| cons (seq)               | front                    | front                       | vary                     | vary                     | vary                       | vary                                 |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| "remove"                 |                          | disj                        |                          |                          | dissoc                     |                                      |
+|--------------------------+--------------------------+-----------------------------+--------------------------+--------------------------+----------------------------+--------------------------------------|
+| contains?                | error                    | [X] index                   | [X] element              | [X] element              | [X] key                    | [X] key                              |
+#+END:
+
+* "literal syntax"
+:PROPERTIES:
+ :list: ()
+ :vector: [ ]
+ :HASH-SET: #{}
+ :sorted-set: #{}
+ :hash-map: {}
+ :sorted-map: {}
+:END:
+
+#+begin_src clojure
+  (type '()) ;=> PersistentList$EmptyList
+#+end_src
+       
+* create from args
+:PROPERTIES:
+ :list: (list 1 2 3)
+ :vector: (vector 1 2 3)
+ :hash-set: (hash-set 2 3 1)
+ :sorted-set: (sorted-set 1 2 3)
+ :hash-map: (hash-map :b 2 :c 3 :a 1)
+ :sorted-map: (sorted-map :a 1 :b 2 :c 3)
+:END:
+* create from collection
+:PROPERTIES:
+:list:     ?
+ :vector: (vec '(1 2 3))
+ :hash-set: (set '(2 3 1))
+ :sorted-set: ?
+ :hash-map: ?
+ :sorted-map: (into (sorted-map) {:a 1 :b 2 :c 3})
+:END:
+* coll?
+:PROPERTIES:
+ :list: [X]
+ :vector: [X]
+ :HASH-SET: [X]
+ :sorted-set: [X]
+ :hash-map: [X]
+ :sorted-map: [X]
+:END:
+
+#+begin_src clojure
+(coll? (list)) ; => true
+(coll? (vector))  ; => true
+(coll? (hash-set)) ; => true
+(coll? (sorted-set))  ; => true
+(coll? (hash-map)) ; => true
+(coll? (sorted-map))  ; => true
+#+end_src
+
+* sequential?
+:PROPERTIES:
+ :list: [X]
+ :vector: [X]
+ :HASH-SET: [ ]
+ :sorted-set: [ ]
+ :hash-map: [ ]
+ :sorted-map: [ ]
+:END:
+Returns true if coll implements Sequential
+
+Definitions from Oxford Languages: sequential - forming or following in a logical order or sequence.
+#+begin_src clojure
+(sequential? (list)) ;=> true
+(sequential? (vector)) ;=> true
+(sequential? (hash-set)) ;=> false
+(sequential? (sorted-set)) ;=> false
+(sequential? (hash-map)) ;=> false
+(sequential? (sorted-map)) ;=> false
+#+end_src
+
+I was thinking that sorted-set & sorted-map are (= sequential? true)
+They have logical order (they are sorted) so why they are not sequential?
+
+
+dgb23
+  1 hour ago
+hashed collections have sequence representations (map entries) that are sequential.
+I think it is more of an implementation thing. In theory you're right, they are both sequential and hashed collections.
+
+phill
+  1 hour ago
+The sequential? docstring tells me nothing about what it does! I do not see a basis for expectation of any particular return value. It would be a good question for ask.clojure.org so it might get clarified.
+However, it would be normal for sequential? to mean "preserves the order of insertion?" which vectors do (expect true), lists do in reverse (expect -true), and sets and maps never do (expect false). (edited)
+
+dgb23
+  1 hour ago
+Sequential is an empty interface. I think it's just a signal that is put on certain implementations.
+* associative?
+:PROPERTIES:
+ :list: [ ]
+ :vector: [X]
+ :HASH-SET: [ ]
+ :sorted-set: [ ]
+ :hash-map: [X]
+ :sorted-map: [X]
+:END:
+Returns true if coll implements Associative
+#+begin_src clojure
+(associative? (list)) ;=> false
+(associative? (vector)) ;=> true
+(associative? (hash-set)) ;=> false
+(associative? (sorted-set)) ;=> false
+(associative? (hash-map)) ;=> true
+(associative? (sorted-map)) ;=> true
+#+end_src
+* type 
+:PROPERTIES:
+ :list: PersistentList$EmptyList
+ :vector: PersistentVector
+ :hash-set: PersistentHashSet
+ :sorted-set: PersistentTreeSet
+ :hash-map: PersistentArrayMap
+ :sorted-map: PersistentTreeMap
+:END:
+Returns the :type metadata of x, or its Class if none
+#+begin_src clojure
+(type (list)) ;=> Persistentlist$EmptyList
+(type (vector)) ;=> PersistentVector
+(type (hash-set)) ;=> PersistentHashSet
+(type (sorted-set)) ;=> PersistentTreeSet
+(type (hash-map)) ;=> PersistentArrayMap
+(type (sorted-map)) ;=> PersistentTreeMap
+#+end_src
+* type data
+:PROPERTIES:
+:list:     PersistentList
+ :vector: PersistentVector
+ :hash-set: PersistentHashSet
+ :sorted-set: PersistentTreeSet
+ :hash-map: PersistentArrayMap
+ :sorted-map: PersistentTreeMap
+:END:
+
+#+begin_src clojure
+(type (list 1)) ;=> Persistentlist
+(type (vector 1)) ;=> PersistentVector
+(type (hash-set 1)) ;=> PersistentHashSet
+(type (sorted-set 1)) ;=> PersistentTreeSet
+(type (hash-map :a 1)) ;=> PersistentHashMap
+(type (sorted-map :a 1)) ;=> PersistentTreeMap
+#+end_src
+* list?
+:PROPERTIES:
+ :list: [X]
+ :vector: [ ]
+ :HASH-SET: [ ]
+ :sorted-set: [ ]
+ :hash-map: [ ]
+ :sorted-map: [ ]
+:END:
+Returns true if x implements IPersistentlist
+#+begin_src clojure
+(list? (list)) ;=> true
+(list? (vector)) ;=> false
+(list? (hash-set)) ;=> false
+(list? (sorted-set)) ;=> false
+(list? (hash-map)) ;=> false
+(list? (sorted-map)) ;=> false
+#+end_src
+       
+* vector?
+:PROPERTIES:
+ :list: [ ]
+ :vector: [X]
+ :HASH-SET: [ ]
+ :sorted-set: [ ]
+ :hash-map: [ ]
+ :sorted-map: [ ]
+:END:
+Return true if x implements IPersistentVector
+#+begin_src clojure
+(vector? (list)) ;=> false
+(vector? (vector)) ;=> true
+(vector? (hash-set)) ;=> false
+(vector? (sorted-set)) ;=> false
+(vector? (hash-map)) ;=> false
+(vector? (sorted-map)) ;=> false
+#+end_src
+* set? 
+:PROPERTIES:
+ :list: [ ]
+ :vector: [ ]
+ :HASH-SET: [X]
+ :sorted-set: [X]
+ :hash-map: [ ]
+ :sorted-map: [ ]
+:END:
+
+#+begin_src clojure
+  (set? (list)) ;=> false
+  (set? (vector)) ;=> false
+  (set? (hash-set)) ;=> true
+  (set? (sorted-set)) ;=> true
+  (set? (hash-map)) ;=> false
+  (set? (sorted-map)) ;=> false
+#+end_src
+* map? 
+:PROPERTIES:
+ :list: [ ]
+ :vector: [ ]
+ :HASH-SET: [ ]
+ :sorted-set: [ ]
+ :hash-map: [X]
+ :sorted-map: [X]
+:END:
+
+#+begin_src clojure
+  (map? (list)) ;=> false
+  (map? (vector)) ;=> false
+  (map? (hash-set)) ;=> false
+  (map? (sorted-set)) ;=> false
+  (map? (hash-map)) ;=> true
+  (map? (sorted-map)) ;=> true
+#+end_src
+* seq? 
+:PROPERTIES:
+ :list: [X]
+ :vector: [ ]
+ :HASH-SET: [ ]
+ :sorted-set: [ ]
+ :hash-map: [ ]
+ :sorted-map: [ ]
+:END:
+Return true if x implements ISeq
+
+#+begin_src clojure
+  (seq? (list)) ;=> true
+  (seq? (vector)) ;=> false
+  (seq? (hash-set)) ;=> false
+  (seq? (sorted-set)) ;=> false
+  (seq? (hash-map)) ;=> false
+  (seq? (sorted-map)) ;=> false
+#+end_src
+* seq? data
+:PROPERTIES:
+ :list: [X]
+ :vector: [ ]
+ :HASH-SET: [ ]
+ :sorted-set: [ ]
+ :hash-map: [ ]
+ :sorted-map: [ ]
+:END:
+Return true if x implements ISeq
+
+#+begin_src clojure
+  (seq? (list 1)) ;=> true
+  (seq? (vector 1)) ;=> false
+  (seq? (hash-set 1)) ;=> false
+  (seq? (sorted-set 1)) ;=> false
+  (seq? (hash-map :a 1)) ;=> false
+  (seq? (sorted-map :a 1)) ;=> false
+#+end_src
+* seq? seq
+:PROPERTIES:
+:list:     [ ]
+:vector:   [ ]
+:hash-set: [ ]
+:sorted-set: [ ]
+:hash-map: [ ]
+:sorted-map: [ ]
+:END:
+
+#+begin_src clojure
+  (seq? (seq (list))) ;=> false
+  (seq? (seq (vector))) ;=> false
+  (seq? (seq (hash-set))) ;=> false
+  (seq? (seq (sorted-set))) ;=> false
+  (seq? (seq (hash-map))) ;=> false
+  (seq? (seq (sorted-map))) ;=> false
+#+end_src
+* seq? seq data
+:PROPERTIES:
+:list:     [X]
+:vector:   [X]
+:hash-set: [X]
+:sorted-set: [X]
+:hash-map: [X]
+:sorted-map: [X]
+:END:
+
+#+begin_src clojure
+  (seq? (seq (list 1))) ;=> true
+  (seq? (seq (vector 1))) ;=> true
+  (seq? (seq (hash-set 1))) ;=> true
+  (seq? (seq (sorted-set 1))) ;=> true
+  (seq? (seq (hash-map :a 1))) ;=> true
+  (seq? (seq (sorted-map :a 1))) ;=> true
+#+end_src
+* type seq
+:PROPERTIES:
+ :list: nil
+ :vector: nil
+ :HASH-SET: nil
+ :sorted-set: nil
+ :hash-map: nil
+ :sorted-map: nil
+:END:
+clojure.core/seq
+([coll])
+
+Returns a seq on the collection. If the collection is
+empty, returns nil.  (seq nil) returns nil. seq also works on
+Strings, native Java arrays (of reference types) and any objects
+that implement Iterable. Note that seqs cache values, thus seq
+should not be used on any Iterable whose iterator repeatedly
+returns the same mutable object.
+
+#+begin_src clojure
+  (seq (list)) ;=> nil
+  (seq (vector)) ;=> nil
+  (seq (hash-set)) ;=> nil
+  (seq (sorted-set)) ;=> nil
+  (seq (hash-map)) ;=> nil
+  (seq (sorted-map)) ;=> nil
+#+end_src
+* type sequence
+:PROPERTIES:
+:list:     PersistentList$EmptyList
+:VECTOR:   PersistentList$EmptyList
+:hash-set: PersistentList$EmptyList
+:sorted-set: PersistentList$EmptyList
+:hash-map: PersistentList$EmptyList
+:sorted-map: PersistentList$EmptyList
+:END:
+clojure.core/sequence
+([coll] [xform coll] [xform coll & colls])
+  Coerces coll to a (possibly empty) sequence, if it is not already
+  one. Will not force a lazy seq. (sequence nil) yields (), When a
+  transducer is supplied, returns a lazy sequence of applications of
+  the transform to the items in coll(s), i.e. to the set of first
+  items of each coll, followed by the set of second
+  items in each coll, until any one of the colls is exhausted.  Any
+  remaining items in other colls are ignored. The transform should accept
+  number-of-colls arguments
+
+#+begin_src clojure
+  (type (sequence (list))) ;=> PersistentList$Emptylist
+  (type (sequence (vector))) ;=> PersistentList$Emptylist
+  (type (sequence (hash-set))) ;=> PersistentList$Emptylist
+  (type (sequence (sorted-set))) ;=> PersistentList$Emptylist
+  (type (sequence (hash-map))) ;=> PersistentList$Emptylist
+  (type (sequence (sorted-map))) ;=> PersistentList$Emptylist
+#+end_src
+* type seq data
+:PROPERTIES:
+ :list:     PersistentList
+ :vector: PersistentVector$ChunkedSeq
+ :HASH-SET: APersistentMap$KeySeq
+ :sorted-set: APersistentMap$KeySeq
+ :hash-map: PersistentHashMap$NodeSeq
+ :sorted-map: PersistentTreeMap$Seq
+:END:
+clojure.core/seq
+([coll])
+
+Returns a seq on the collection. If the collection is
+empty, returns nil.  (seq nil) returns nil. seq also works on
+Strings, native Java arrays (of reference types) and any objects
+that implement Iterable. Note that seqs cache values, thus seq
+should not be used on any Iterable whose iterator repeatedly
+returns the same mutable object.
+
+#+begin_src clojure
+  (type (seq (list 1))) ;=> Persistentlist
+  (type (seq (vector 1))) ;=> PersistentVector$ChunkedSeq
+  (type (seq (hash-set 1))) ;=> APersistentMap$KeySeq
+  (type (seq (sorted-set 1))) ;=> APersistentMap$KeySeq
+  (type (seq (hash-map :a 1))) ;=> PersistentHashMap$NodeSeq
+  (type (seq (sorted-map :a 1))) ;=> PersistentTreeMap$Seq
+#+end_src
+* type sequence data
+:PROPERTIES:
+ :list:     PersistentList
+ :vector: PersistentVector$ChunkedSeq
+ :HASH-SET: APersistentMap$KeySeq
+ :sorted-set: APersistentMap$KeySeq
+ :hash-map: PersistentHashMap$NodeSeq
+ :sorted-map: PersistentTreeMap$Seq
+:END:
+clojure.core/sequence
+([coll] [xform coll] [xform coll & colls])
+  Coerces coll to a (possibly empty) sequence, if it is not already
+  one. Will not force a lazy seq. (sequence nil) yields (), When a
+  transducer is supplied, returns a lazy sequence of applications of
+  the transform to the items in coll(s), i.e. to the set of first
+  items of each coll, followed by the set of second
+  items in each coll, until any one of the colls is exhausted.  Any
+  remaining items in other colls are ignored. The transform should accept
+  number-of-colls arguments
+
+#+begin_src clojure
+  (type (sequence (list 1))) ;=> PersistentList
+  (type (sequence (vector 1))) ;=> PersistentVector$ChunkedSequence
+  (type (sequence (hash-set 1))) ;=> APersistentMap$KeySequence
+  (type (sequence (sorted-set 1))) ;=> APersistentMap$KeySequence
+  (type (sequence (hash-map :a 1))) ;=> PersistentHashMap$NodeSequence
+  (type (sequence (sorted-map :a 1))) ;=> PersistentTreeMap$Sequence
+#+end_src
+       
+* "unique elements"
+:PROPERTIES:
+ :list: [ ]
+ :vector: [ ]
+ :HASH-SET: [X]
+ :sorted-set: [X]
+ :hash-map: [X] only keys
+ :sorted-map: [X] only keys
+:END:  
+* "same order of elements"
+:PROPERTIES:
+ :list: [X]
+ :vector: [X]
+ :HASH-SET: [ ]
+ :sorted-set: [X]
+ :hash-map: [ ]
+ :sorted-map: [X]
+:END:  
+* "read"
+:PROPERTIES:
+ :list: nth
+ :VECTOR:   get, IFn, nth
+ :HASH-SET:
+ :sorted-set:
+ :HASH-MAP: get, IFn, key
+ :SORTED-MAP: get, IFn, key
+:END:
+
+list - You cannot use the get function with a list to retrieve by index.
+* get  
+:PROPERTIES:
+:list:     nil
+:VECTOR:   nil
+:sorted-set: nil
+:hash-map: nil
+:sorted-map: nil
+:hash-set: nil
+:END:
+([map key] [map key not-found])
+
+#+begin_src clojure
+  (get (list) 0) ;=> nil
+  (get (vector) 0) ;=> nil
+  (get (hash-set) 0) ;=> nil
+  (get (sorted-set) 0) ;=> nil
+  (get (hash-map) :a) ;=> nil
+  (get (sorted-map) :a) ;=> nil
+#+end_src
+* get data 
+:PROPERTIES:
+:list:     nil
+:VECTOR:   [X] index
+:sorted-set: useless
+:hash-map: [X] key
+:sorted-map: [X] key
+:hash-set: useless
+:END:
+([map key] [map key not-found])
+
+#+begin_src clojure
+  (get (list :a :b) 0) ;=> nil
+  (get (list :a :b) :a) ;=> nil
+  (get (list :a :b) "string") ;=> nil
+ ; Although lists are sequences, they are not keyed sequences.
+
+  (get (vector :a :b) 0) ;=> :a
+  (get (vector :a :b) 1) ;=> :b
+
+  (get (hash-set :a :b) 0) ;=> nil
+  (get (hash-set :a :b) 1) ;=> nil
+  (get (hash-set :a :b) :a) ;=> :a
+  (get (hash-set :a :b) "string") ;=> nil
+
+  (get (sorted-set :a :b) 0) ;=> Unhandled java.lang.ClassCastException
+  (get (sorted-set :a :b) 1) ;=> Unhandled java.lang.ClassCastException
+  (get (sorted-set :a :b) "string") ;=> Unhandled java.lang.ClassCastException
+  (get (sorted-set :a :b) :a) ;=> :a
+  (get (sorted-set :a :b) :b) ;=> :a
+
+  (get (hash-map :a 1 :b 2) :a) ;=> 1
+  (get (hash-map :a 1 :b 2) 1) ;=> nil
+  (get (sorted-map :a 1 :b 2) :a) ;=> 1
+  (get (sorted-map :a 1 :b 2) 1) ;=> ;=> Unhandled java.lang.ClassCastException
+#+end_src
+* get nil
+:PROPERTIES:
+:list:     nil
+:VECTOR:   nil
+:sorted-set: nil
+:hash-map: nil
+:sorted-map: nil
+:hash-set: nil
+:END:
+
+#+begin_src clojure
+(get nil 0) ; => nil
+#+end_src
+* get out of range
+:PROPERTIES:
+:LIST:     nil or not-found
+:VECTOR:   nil or not-found
+:HASH-SET: nil or not-found
+:SORTED-SET: nil or not-found
+:HASH-MAP: nil or not-found
+:SORTED-MAP: nil or not-found
+:END:  
+* IFn  
+:PROPERTIES:
+ :list: error
+ :VECTOR:   ([:a :b :c] 1) => :b
+ :hash-set: error
+ :sorted-set: error
+ :hash-map: ({:b 2 :c 3 :a 1} :b) => 2
+ :sorted-map: ({:a 1 :b 2 :c 3} :a) => 1
+:END:
+
+#+begin_src clojure
+('(1 2 3) 1) ; class clojure.lang.PersistentList cannot be cast to class clojure.lang.IFn (clojure.lang.PersistentList and clojure.lang.IFn
+
+([1 2 3] 1) ;=> 2
+
+(#(1 2 3) 2) ;=> error
+#+end_src
+
+'IFn' means 'Interface Function'.
+Keywords also have this interface. In the preceding examples, we can see that a list that is not quoted with ' throws an
+error unless the first item of the list can be invoked as a function.
+
+#+begin_src clojure
+  ({:a 1 :b 2 :c 3} :a); => 1 | maps are functions of their keys
+  (:a {:a 1 :b 2 :c 3}) ; => 1 | keywords are also functions
+
+  (1 [:b :c :a]) ;=> error
+  ([:b :c :a] 1) ;=> :c
+  (:c [:b :c :a]) ;=> nil
+
+  (nil 0) ; => IllegalArgumentException
+#+end_src
+* IFn out of range
+:PROPERTIES:
+:LIST:     error
+:VECTOR:   error
+:HASH-SET: error
+:SORTED-SET: error
+:SORTED-MAP: nil
+:HASH-MAP: nil
+:END:
+
+#+begin_src clojure
+  ([:a :b] 2) ;=> IndexOutOfBoundsException
+  ({:a 1 :b 2} :c); => nil
+#+end_src
+       
+* nth  
+:PROPERTIES:
+:list:     [X]
+:VECTOR:   [X]
+:SORTED-SET: {X]
+:HASH-MAP: error
+:SORTED-MAP: error
+:HASH-SET: [X]
+:END:
+([coll index] [coll index not-found]) throws an exception unless not-found is supplied
+
+using nth to retrieve an element from a list is slower than using get to retrieve an element from a vector.
+#+begin_src clojure
+  (nth (list :a :b) 0) ;=> :a
+  (nth (list :a :b) 1) ;=> :b
+  (nth (list :a :b) 3) ;=> Unhandled java.lang.IndexOutOfBoundsException
+
+  (nth (vector :a :b) 0) ;=> :a
+  (nth (vector :a :b) 1) ;=> :b
+
+  (nth (hash-set :a :b) 0) ;=> Unhandled java.lang.UnsupportedOperationException
+
+  (nth (sorted-set :a :b) 0) ;=> Unhandled java.lang.UnsupportedOperationException
+
+  (nth (hash-map :a 1 :b 2) 0) ;=> Unhandled java.lang.UnsupportedOperationException
+#+end_src
+* nth nil
+:PROPERTIES:
+:LIST:
+:VECTOR:   nil
+:END:
+
+#+begin_src clojure
+(nth nil 0) ; => nil
+#+end_src
+* nth out of range
+:PROPERTIES:
+:list:
+:VECTOR:   
+:SORTED-SET:
+:HASH-MAP:
+:SORTED-MAP:
+:HASH-SET:
+:END:
+
+#+begin_src clojure
+
+#+end_src
+* "add"
+:PROPERTIES:
+:list:     cons, conj
+:vector:
+ :HASH-SET:
+ :sorted-set:
+ :hash-map: assoc
+ :sorted-map: assoc
+:END:  
+* conj (coll)
+:PROPERTIES:
+ :list: front
+ :vector: back
+ :hash-set: vary
+ :sorted-set: vary
+ :hash-map: vary
+ :sorted-map: vary
+:END:
+
+#+begin_src clojure
+(conj [1 2 3] 4)
+; => [1 2 3 4]
+#+end_src
+
+* cons (seq)
+:PROPERTIES:
+ :list: front
+ :vector: front
+ :hash-set: vary
+ :sorted-set: vary
+ :hash-map: vary
+ :sorted-map: vary
+:END:
+
+#+begin_src clojure
+  (cons "two" (list "first")) ;=> ("two" "first")
+  (cons "two" (vector "first"))  ;=> ("two" "first")
+  (cons "two" (hash-set "first"))  ;=> ("two" "first")
+  (cons "two" (sorted-set "first"))  ;=> ("two" "first")
+#+end_src
+
+* "remove"
+:PROPERTIES:
+ :list:
+ :vector: disj
+ :hash-set:
+ :sorted-set:
+ :hash-map: dissoc
+ :sorted-map:
+:END:  
+* contains?
+:PROPERTIES:
+ :list: error
+ :VECTOR:   [X] index
+ :HASH-SET: [X] element
+ :SORTED-SET: [X] element
+ :hash-map: [X] key
+ :sorted-map: [X] key
+:END:
+#+begin_src clojure
+#+begin_src clojure
+(contains? '(1 2 4 3) 4)
+;=> IllegalArgumentException
+
+(contains? [1 2 3 4] 0) ;=> true
+(contains? [1 2 3 4] 4) ;=> false
+
+(contains? #{1 2 3 4} 0) ;=> false
+(contains? #{1 2 3 4} 4) ;=> true
+
+(contains? {:a 1 :b 2} :a) ;=> true
+(contains? {:a 1 :b 2} 1) ;=> true
+#+end_src
