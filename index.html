@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-05-02 Tue 20:23 -->
+<!-- 2023-05-04 Thu 23:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -204,6 +204,7 @@ legend:
 <li>'data' means minimal data provided e.g (list 1), (vector 1), (hash-map :a 1)</li>
 </ul>
 
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -258,10 +259,10 @@ legend:
 <tbody>
 <tr>
 <td class="org-left">create from collection</td>
-<td class="org-left">?</td>
+<td class="org-left">(apply list [1 2 3])</td>
 <td class="org-left">(vec '(1 2 3))</td>
 <td class="org-left">(set '(2 3 1))</td>
-<td class="org-left">?</td>
+<td class="org-left">(apply sorted-set [2 3 1])</td>
 <td class="org-left">?</td>
 <td class="org-left">(into (sorted-map) {:a 1 :b 2 :c 3})</td>
 </tr>
@@ -269,19 +270,19 @@ legend:
 <tbody>
 <tr>
 <td class="org-left">coll?</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">sequential?</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
 <td class="org-left">[ ]</td>
 <td class="org-left">[ ]</td>
 <td class="org-left">[ ]</td>
@@ -291,12 +292,12 @@ legend:
 <tbody>
 <tr>
 <td class="org-left">associative?</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
+<td class="org-left">false</td>
+<td class="org-left">true</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
 </tr>
 </tbody>
 <tbody>
@@ -324,89 +325,89 @@ legend:
 <tbody>
 <tr>
 <td class="org-left">list?</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
+<td class="org-left">true</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">vector?</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
+<td class="org-left">false</td>
+<td class="org-left">true</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">set?</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">map?</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">seq?</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
+<td class="org-left">true</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">seq? data</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
+<td class="org-left">true</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">seq? seq</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">seq? seq data</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
 </tr>
 </tbody>
 <tbody>
@@ -456,23 +457,23 @@ legend:
 <tbody>
 <tr>
 <td class="org-left">"unique elements"</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X] only keys</td>
-<td class="org-left">[X] only keys</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true (only keys)</td>
+<td class="org-left">true (only keys)</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
 <td class="org-left">"same order of elements"</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[X]</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">false</td>
+<td class="org-left">true</td>
+<td class="org-left">false</td>
+<td class="org-left">true</td>
 </tr>
 </tbody>
 <tbody>
@@ -501,11 +502,11 @@ legend:
 <tr>
 <td class="org-left">get data</td>
 <td class="org-left">nil</td>
-<td class="org-left">[X] index</td>
+<td class="org-left">true (index)</td>
 <td class="org-left">useless</td>
 <td class="org-left">useless</td>
-<td class="org-left">[X] key</td>
-<td class="org-left">[X] key</td>
+<td class="org-left">true (key)</td>
+<td class="org-left">true (key)</td>
 </tr>
 </tbody>
 <tbody>
@@ -555,10 +556,10 @@ legend:
 <tbody>
 <tr>
 <td class="org-left">nth</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">[X]</td>
-<td class="org-left">{X]</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
+<td class="org-left">true</td>
 <td class="org-left">error</td>
 <td class="org-left">error</td>
 </tr>
@@ -633,17 +634,17 @@ legend:
 <tr>
 <td class="org-left">contains?</td>
 <td class="org-left">error</td>
-<td class="org-left">[X] index</td>
-<td class="org-left">[X] element</td>
-<td class="org-left">[X] element</td>
-<td class="org-left">[X] key</td>
-<td class="org-left">[X] key</td>
+<td class="org-left">true (index)</td>
+<td class="org-left">true (element)</td>
+<td class="org-left">true (element)</td>
+<td class="org-left">true (key)</td>
+<td class="org-left">true (key)</td>
 </tr>
 </tbody>
 </table>
 
-<div id="outline-container-orgf79af3a" class="outline-2">
-<h2 id="orgf79af3a"><span class="section-number-2">1.</span> "literal syntax"</h2>
+<div id="outline-container-org88c97c0" class="outline-2">
+<h2 id="org88c97c0"><span class="section-number-2">1.</span> "literal syntax"</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-clojure">(type '()) <span style="color: #696969;">;=&gt; PersistentList$EmptyList</span>
@@ -652,18 +653,26 @@ legend:
 </div>
 </div>
 
-<div id="outline-container-org6ba893d" class="outline-2">
-<h2 id="org6ba893d"><span class="section-number-2">2.</span> create from args</h2>
+<div id="outline-container-orgad0c233" class="outline-2">
+<h2 id="orgad0c233"><span class="section-number-2">2.</span> create from args</h2>
 <div class="outline-text-2" id="text-2">
 </div>
 </div>
-<div id="outline-container-org3cc3974" class="outline-2">
-<h2 id="org3cc3974"><span class="section-number-2">3.</span> create from collection</h2>
+<div id="outline-container-org04d8a10" class="outline-2">
+<h2 id="org04d8a10"><span class="section-number-2">3.</span> create from collection</h2>
 <div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-clojure">(apply list [1 2 3]) <span style="color: #696969;">;=&gt; (1 2 3)</span>
+(apply sorted-set [2 3 1]) <span style="color: #696969;">;=&gt; #{1 2 3}</span>
+(into (hash-map) {<span style="color: #d2a6ff;">:a</span> 1 <span style="color: #d2a6ff;">:b</span> 2}) <span style="color: #696969;">;=&gt; {:a 1, :b 2}</span>
+(into (sorted-map) {<span style="color: #d2a6ff;">:b</span> 2 <span style="color: #d2a6ff;">:c</span> 3 <span style="color: #d2a6ff;">:a</span> 1}) <span style="color: #696969;">;=&gt; {:a 1, :b 2, :c 3}</span>
+</pre>
 </div>
 </div>
-<div id="outline-container-org2a575fc" class="outline-2">
-<h2 id="org2a575fc"><span class="section-number-2">4.</span> coll?</h2>
+</div>
+
+<div id="outline-container-org6bdb4fa" class="outline-2">
+<h2 id="org6bdb4fa"><span class="section-number-2">4.</span> coll?</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-clojure">(coll? (list)) <span style="color: #696969;">; =&gt; true</span>
@@ -677,8 +686,8 @@ legend:
 </div>
 </div>
 
-<div id="outline-container-org8069934" class="outline-2">
-<h2 id="org8069934"><span class="section-number-2">5.</span> sequential?</h2>
+<div id="outline-container-orgd3684bf" class="outline-2">
+<h2 id="orgd3684bf"><span class="section-number-2">5.</span> sequential?</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Returns true if coll implements Sequential
@@ -720,8 +729,8 @@ Sequential is an empty interface. I think it's just a signal that is put on cert
 </p>
 </div>
 </div>
-<div id="outline-container-org6c56a91" class="outline-2">
-<h2 id="org6c56a91"><span class="section-number-2">6.</span> associative?</h2>
+<div id="outline-container-org8d2e93b" class="outline-2">
+<h2 id="org8d2e93b"><span class="section-number-2">6.</span> associative?</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Returns true if coll implements Associative
@@ -737,8 +746,8 @@ Returns true if coll implements Associative
 </div>
 </div>
 </div>
-<div id="outline-container-org5d44f8f" class="outline-2">
-<h2 id="org5d44f8f"><span class="section-number-2">7.</span> type</h2>
+<div id="outline-container-org0630edc" class="outline-2">
+<h2 id="org0630edc"><span class="section-number-2">7.</span> type</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Returns the :type metadata of x, or its Class if none
@@ -754,8 +763,8 @@ Returns the :type metadata of x, or its Class if none
 </div>
 </div>
 </div>
-<div id="outline-container-org0110584" class="outline-2">
-<h2 id="org0110584"><span class="section-number-2">8.</span> type data</h2>
+<div id="outline-container-orgd864704" class="outline-2">
+<h2 id="orgd864704"><span class="section-number-2">8.</span> type data</h2>
 <div class="outline-text-2" id="text-8">
 <div class="org-src-container">
 <pre class="src src-clojure">(type (list 1)) <span style="color: #696969;">;=&gt; Persistentlist</span>
@@ -768,8 +777,8 @@ Returns the :type metadata of x, or its Class if none
 </div>
 </div>
 </div>
-<div id="outline-container-org5eb3c4d" class="outline-2">
-<h2 id="org5eb3c4d"><span class="section-number-2">9.</span> list?</h2>
+<div id="outline-container-org0fbe361" class="outline-2">
+<h2 id="org0fbe361"><span class="section-number-2">9.</span> list?</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 Returns true if x implements IPersistentlist
@@ -786,8 +795,8 @@ Returns true if x implements IPersistentlist
 </div>
 </div>
 
-<div id="outline-container-orgfeaf198" class="outline-2">
-<h2 id="orgfeaf198"><span class="section-number-2">10.</span> vector?</h2>
+<div id="outline-container-org9cad0c8" class="outline-2">
+<h2 id="org9cad0c8"><span class="section-number-2">10.</span> vector?</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 Return true if x implements IPersistentVector
@@ -803,8 +812,8 @@ Return true if x implements IPersistentVector
 </div>
 </div>
 </div>
-<div id="outline-container-orgbd22e22" class="outline-2">
-<h2 id="orgbd22e22"><span class="section-number-2">11.</span> set?</h2>
+<div id="outline-container-org9ba3d07" class="outline-2">
+<h2 id="org9ba3d07"><span class="section-number-2">11.</span> set?</h2>
 <div class="outline-text-2" id="text-11">
 <div class="org-src-container">
 <pre class="src src-clojure">(set? (list)) <span style="color: #696969;">;=&gt; false</span>
@@ -817,8 +826,8 @@ Return true if x implements IPersistentVector
 </div>
 </div>
 </div>
-<div id="outline-container-orgdb63138" class="outline-2">
-<h2 id="orgdb63138"><span class="section-number-2">12.</span> map?</h2>
+<div id="outline-container-org595e62d" class="outline-2">
+<h2 id="org595e62d"><span class="section-number-2">12.</span> map?</h2>
 <div class="outline-text-2" id="text-12">
 <div class="org-src-container">
 <pre class="src src-clojure">(map? (list)) <span style="color: #696969;">;=&gt; false</span>
@@ -831,8 +840,8 @@ Return true if x implements IPersistentVector
 </div>
 </div>
 </div>
-<div id="outline-container-orgcdfc7a7" class="outline-2">
-<h2 id="orgcdfc7a7"><span class="section-number-2">13.</span> seq?</h2>
+<div id="outline-container-org254daea" class="outline-2">
+<h2 id="org254daea"><span class="section-number-2">13.</span> seq?</h2>
 <div class="outline-text-2" id="text-13">
 <p>
 Return true if x implements ISeq
@@ -849,8 +858,8 @@ Return true if x implements ISeq
 </div>
 </div>
 </div>
-<div id="outline-container-org50fa72c" class="outline-2">
-<h2 id="org50fa72c"><span class="section-number-2">14.</span> seq? data</h2>
+<div id="outline-container-org04cec8f" class="outline-2">
+<h2 id="org04cec8f"><span class="section-number-2">14.</span> seq? data</h2>
 <div class="outline-text-2" id="text-14">
 <p>
 Return true if x implements ISeq
@@ -867,8 +876,8 @@ Return true if x implements ISeq
 </div>
 </div>
 </div>
-<div id="outline-container-orge7448ce" class="outline-2">
-<h2 id="orge7448ce"><span class="section-number-2">15.</span> seq? seq</h2>
+<div id="outline-container-orgd83c56b" class="outline-2">
+<h2 id="orgd83c56b"><span class="section-number-2">15.</span> seq? seq</h2>
 <div class="outline-text-2" id="text-15">
 <div class="org-src-container">
 <pre class="src src-clojure">(seq? (seq (list))) <span style="color: #696969;">;=&gt; false</span>
@@ -881,8 +890,8 @@ Return true if x implements ISeq
 </div>
 </div>
 </div>
-<div id="outline-container-orgb59bb69" class="outline-2">
-<h2 id="orgb59bb69"><span class="section-number-2">16.</span> seq? seq data</h2>
+<div id="outline-container-org3f85c33" class="outline-2">
+<h2 id="org3f85c33"><span class="section-number-2">16.</span> seq? seq data</h2>
 <div class="outline-text-2" id="text-16">
 <div class="org-src-container">
 <pre class="src src-clojure">(seq? (seq (list 1))) <span style="color: #696969;">;=&gt; true</span>
@@ -895,8 +904,8 @@ Return true if x implements ISeq
 </div>
 </div>
 </div>
-<div id="outline-container-orgb94afdb" class="outline-2">
-<h2 id="orgb94afdb"><span class="section-number-2">17.</span> type seq</h2>
+<div id="outline-container-org6af9595" class="outline-2">
+<h2 id="org6af9595"><span class="section-number-2">17.</span> type seq</h2>
 <div class="outline-text-2" id="text-17">
 <p>
 clojure.core/seq
@@ -923,8 +932,8 @@ returns the same mutable object.
 </div>
 </div>
 </div>
-<div id="outline-container-org2126b16" class="outline-2">
-<h2 id="org2126b16"><span class="section-number-2">18.</span> type sequence</h2>
+<div id="outline-container-org6b083f2" class="outline-2">
+<h2 id="org6b083f2"><span class="section-number-2">18.</span> type sequence</h2>
 <div class="outline-text-2" id="text-18">
 <p>
 clojure.core/sequence
@@ -950,8 +959,8 @@ clojure.core/sequence
 </div>
 </div>
 </div>
-<div id="outline-container-org253a97d" class="outline-2">
-<h2 id="org253a97d"><span class="section-number-2">19.</span> type seq data</h2>
+<div id="outline-container-org1a2e491" class="outline-2">
+<h2 id="org1a2e491"><span class="section-number-2">19.</span> type seq data</h2>
 <div class="outline-text-2" id="text-19">
 <p>
 clojure.core/seq
@@ -978,8 +987,8 @@ returns the same mutable object.
 </div>
 </div>
 </div>
-<div id="outline-container-orgefa8a81" class="outline-2">
-<h2 id="orgefa8a81"><span class="section-number-2">20.</span> type sequence data</h2>
+<div id="outline-container-org36bb5af" class="outline-2">
+<h2 id="org36bb5af"><span class="section-number-2">20.</span> type sequence data</h2>
 <div class="outline-text-2" id="text-20">
 <p>
 clojure.core/sequence
@@ -1006,26 +1015,26 @@ clojure.core/sequence
 </div>
 </div>
 
-<div id="outline-container-org08c6a71" class="outline-2">
-<h2 id="org08c6a71"><span class="section-number-2">21.</span> "unique elements"</h2>
+<div id="outline-container-orgb52727c" class="outline-2">
+<h2 id="orgb52727c"><span class="section-number-2">21.</span> "unique elements"</h2>
 <div class="outline-text-2" id="text-21">
 </div>
 </div>
-<div id="outline-container-orgebc7f3a" class="outline-2">
-<h2 id="orgebc7f3a"><span class="section-number-2">22.</span> "same order of elements"</h2>
+<div id="outline-container-org2786bd1" class="outline-2">
+<h2 id="org2786bd1"><span class="section-number-2">22.</span> "same order of elements"</h2>
 <div class="outline-text-2" id="text-22">
 </div>
 </div>
-<div id="outline-container-org11c11da" class="outline-2">
-<h2 id="org11c11da"><span class="section-number-2">23.</span> "read"</h2>
+<div id="outline-container-orgf8c5cad" class="outline-2">
+<h2 id="orgf8c5cad"><span class="section-number-2">23.</span> "read"</h2>
 <div class="outline-text-2" id="text-23">
 <p>
 You cannot use the get function with a list to retrieve by index.
 </p>
 </div>
 </div>
-<div id="outline-container-orgad8a8fa" class="outline-2">
-<h2 id="orgad8a8fa"><span class="section-number-2">24.</span> get</h2>
+<div id="outline-container-org2345cc1" class="outline-2">
+<h2 id="org2345cc1"><span class="section-number-2">24.</span> get</h2>
 <div class="outline-text-2" id="text-24">
 <p>
 ([map key] [map key not-found])
@@ -1042,8 +1051,8 @@ You cannot use the get function with a list to retrieve by index.
 </div>
 </div>
 </div>
-<div id="outline-container-orgbbd729a" class="outline-2">
-<h2 id="orgbbd729a"><span class="section-number-2">25.</span> get data</h2>
+<div id="outline-container-org30d9f4a" class="outline-2">
+<h2 id="org30d9f4a"><span class="section-number-2">25.</span> get data</h2>
 <div class="outline-text-2" id="text-25">
 <p>
 ([map key] [map key not-found])
@@ -1077,8 +1086,8 @@ You cannot use the get function with a list to retrieve by index.
 </div>
 </div>
 </div>
-<div id="outline-container-org291d5ce" class="outline-2">
-<h2 id="org291d5ce"><span class="section-number-2">26.</span> get nil</h2>
+<div id="outline-container-orgf9352fb" class="outline-2">
+<h2 id="orgf9352fb"><span class="section-number-2">26.</span> get nil</h2>
 <div class="outline-text-2" id="text-26">
 <div class="org-src-container">
 <pre class="src src-clojure">(get <span style="color: #d2a6ff;">nil</span> 0) <span style="color: #696969;">; =&gt; nil</span>
@@ -1086,13 +1095,13 @@ You cannot use the get function with a list to retrieve by index.
 </div>
 </div>
 </div>
-<div id="outline-container-orge0ee23f" class="outline-2">
-<h2 id="orge0ee23f"><span class="section-number-2">27.</span> get out of range</h2>
+<div id="outline-container-orgc4f7fa6" class="outline-2">
+<h2 id="orgc4f7fa6"><span class="section-number-2">27.</span> get out of range</h2>
 <div class="outline-text-2" id="text-27">
 </div>
 </div>
-<div id="outline-container-org97f1120" class="outline-2">
-<h2 id="org97f1120"><span class="section-number-2">28.</span> IFn</h2>
+<div id="outline-container-org2b678af" class="outline-2">
+<h2 id="org2b678af"><span class="section-number-2">28.</span> IFn</h2>
 <div class="outline-text-2" id="text-28">
 <div class="org-src-container">
 <pre class="src src-clojure">('(1 2 3) 1) <span style="color: #696969;">; class clojure.lang.PersistentList cannot be cast to class clojure.lang.IFn (clojure.lang.PersistentList and clojure.lang.IFn</span>
@@ -1122,8 +1131,8 @@ error unless the first item of the list can be invoked as a function.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb1f6d54" class="outline-2">
-<h2 id="orgb1f6d54"><span class="section-number-2">29.</span> IFn out of range</h2>
+<div id="outline-container-org0d0eb80" class="outline-2">
+<h2 id="org0d0eb80"><span class="section-number-2">29.</span> IFn out of range</h2>
 <div class="outline-text-2" id="text-29">
 <div class="org-src-container">
 <pre class="src src-clojure">([<span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>] 2) <span style="color: #696969;">;=&gt; IndexOutOfBoundsException</span>
@@ -1133,8 +1142,8 @@ error unless the first item of the list can be invoked as a function.
 </div>
 </div>
 
-<div id="outline-container-orgd7de2b1" class="outline-2">
-<h2 id="orgd7de2b1"><span class="section-number-2">30.</span> nth</h2>
+<div id="outline-container-org4ffecc7" class="outline-2">
+<h2 id="org4ffecc7"><span class="section-number-2">30.</span> nth</h2>
 <div class="outline-text-2" id="text-30">
 <p>
 ([coll index] [coll index not-found]) throws an exception unless not-found is supplied
@@ -1160,8 +1169,8 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 </div>
 </div>
-<div id="outline-container-org4cf98b8" class="outline-2">
-<h2 id="org4cf98b8"><span class="section-number-2">31.</span> nth nil</h2>
+<div id="outline-container-org3d9b8cc" class="outline-2">
+<h2 id="org3d9b8cc"><span class="section-number-2">31.</span> nth nil</h2>
 <div class="outline-text-2" id="text-31">
 <div class="org-src-container">
 <pre class="src src-clojure">(nth <span style="color: #d2a6ff;">nil</span> 0) <span style="color: #696969;">; =&gt; nil</span>
@@ -1169,8 +1178,8 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 </div>
 </div>
-<div id="outline-container-orgc83b771" class="outline-2">
-<h2 id="orgc83b771"><span class="section-number-2">32.</span> nth out of range</h2>
+<div id="outline-container-org867bff3" class="outline-2">
+<h2 id="org867bff3"><span class="section-number-2">32.</span> nth out of range</h2>
 <div class="outline-text-2" id="text-32">
 <div class="org-src-container">
 <pre class="src src-clojure">
@@ -1178,13 +1187,13 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 </div>
 </div>
-<div id="outline-container-org2d623a5" class="outline-2">
-<h2 id="org2d623a5"><span class="section-number-2">33.</span> "add"</h2>
+<div id="outline-container-org1d69b82" class="outline-2">
+<h2 id="org1d69b82"><span class="section-number-2">33.</span> "add"</h2>
 <div class="outline-text-2" id="text-33">
 </div>
 </div>
-<div id="outline-container-org34250a5" class="outline-2">
-<h2 id="org34250a5"><span class="section-number-2">34.</span> conj (coll)</h2>
+<div id="outline-container-orgc8a1d3b" class="outline-2">
+<h2 id="orgc8a1d3b"><span class="section-number-2">34.</span> conj (coll)</h2>
 <div class="outline-text-2" id="text-34">
 <div class="org-src-container">
 <pre class="src src-clojure">(conj [1 2 3] 4) <span style="color: #696969;">; =&gt; [1 2 3 4]</span>
@@ -1193,8 +1202,8 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 </div>
 
-<div id="outline-container-org40420a4" class="outline-2">
-<h2 id="org40420a4"><span class="section-number-2">35.</span> cons (seq)</h2>
+<div id="outline-container-orgd58aadf" class="outline-2">
+<h2 id="orgd58aadf"><span class="section-number-2">35.</span> cons (seq)</h2>
 <div class="outline-text-2" id="text-35">
 <div class="org-src-container">
 <pre class="src src-clojure">(cons <span style="color: #6C8A56;">"two"</span> (list <span style="color: #6C8A56;">"first"</span>)) <span style="color: #696969;">;=&gt; ("two" "first")</span>
@@ -1206,13 +1215,13 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 </div>
 
-<div id="outline-container-org5ee514d" class="outline-2">
-<h2 id="org5ee514d"><span class="section-number-2">36.</span> "remove"</h2>
+<div id="outline-container-org9f523a7" class="outline-2">
+<h2 id="org9f523a7"><span class="section-number-2">36.</span> "remove"</h2>
 <div class="outline-text-2" id="text-36">
 </div>
 </div>
-<div id="outline-container-orgdec6129" class="outline-2">
-<h2 id="orgdec6129"><span class="section-number-2">37.</span> contains?</h2>
+<div id="outline-container-org3fdf3b0" class="outline-2">
+<h2 id="org3fdf3b0"><span class="section-number-2">37.</span> contains?</h2>
 <div class="outline-text-2" id="text-37">
 <div class="org-src-container">
 <pre class="src src-clojure">#+begin_src clojure
@@ -1234,7 +1243,7 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sławomir Grochowski</p>
-<p class="date">Created: 2023-05-02 Tue 20:23</p>
+<p class="date">Created: 2023-05-04 Thu 23:31</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
