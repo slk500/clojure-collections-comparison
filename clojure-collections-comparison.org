@@ -4,7 +4,8 @@
 #+COLUMNS: %34ITEM(item) %25LIST(list) %28VECTOR(vector) %24HASH-SET(hash-set) %26SORTED-SET(sorted-set) %27HASH-MAP(hash-map) %37SORTED-MAP(sorted-map)
 
 legend:
-- 'data' means minimal data provided e.g (list 1), (vector 1), (hash-map :a 1)
+- '1' means minimal data provided e.g (list 1), (vector 1), (hash-map :a 1)
+- 'x' is one of data type created from function list, vector, hash-set etc.
 
 
 #+BEGIN: columnview :hlines 1 :id global
@@ -125,7 +126,7 @@ legend:
 (into (sorted-map) {:b 2 :c 3 :a 1}) ;=> {:a 1, :b 2, :c 3}
 #+end_src
 
-* coll?
+* (coll? (x))
 :PROPERTIES:
  :list: true
  :vector: true
@@ -144,7 +145,7 @@ legend:
 (coll? (sorted-map))  ; => true
 #+end_src
 
-* sequential?
+* (sequential? (x))
 :PROPERTIES:
  :list: true
  :vector: true
@@ -178,7 +179,7 @@ However, it would be normal for sequential? to mean "preserves the order of inse
 
 dgb23
 Sequential is an empty interface. I think it's just a signal that is put on certain implementations.
-* associative?
+* (associative? (x))
 :PROPERTIES:
  :list: false
  :vector: true
@@ -196,7 +197,7 @@ Returns true if coll implements Associative
 (associative? (hash-map)) ;=> true
 (associative? (sorted-map)) ;=> true
 #+end_src
-* type
+* (type (x))
 :PROPERTIES:
  :list: PersistentList$EmptyList
  :vector: PersistentVector
@@ -214,7 +215,7 @@ Returns the :type metadata of x, or its Class if none
 (type (hash-map)) ;=> PersistentArrayMap
 (type (sorted-map)) ;=> PersistentTreeMap
 #+end_src
-* type data
+* (type (x 1))
 :PROPERTIES:
 :list:     PersistentList
  :vector: PersistentVector
@@ -232,7 +233,7 @@ Returns the :type metadata of x, or its Class if none
 (type (hash-map :a 1)) ;=> PersistentHashMap
 (type (sorted-map :a 1)) ;=> PersistentTreeMap
 #+end_src
-* list?
+* (list? (x))
 :PROPERTIES:
  :list: true
  :vector: false
@@ -251,7 +252,7 @@ Returns true if x implements IPersistentlist
 (list? (sorted-map)) ;=> false
 #+end_src
        
-* vector?
+* (vector? (x))
 :PROPERTIES:
  :list: false
  :vector: true
@@ -269,7 +270,7 @@ Return true if x implements IPersistentVector
 (vector? (hash-map)) ;=> false
 (vector? (sorted-map)) ;=> false
 #+end_src
-* set?
+* (set? (x))
 :PROPERTIES:
  :list: false
  :vector: false
@@ -287,7 +288,7 @@ Return true if x implements IPersistentVector
   (set? (hash-map)) ;=> false
   (set? (sorted-map)) ;=> false
 #+end_src
-* map?
+* (map? (x))
 :PROPERTIES:
  :list: false
  :vector: false
@@ -305,7 +306,7 @@ Return true if x implements IPersistentVector
   (map? (hash-map)) ;=> true
   (map? (sorted-map)) ;=> true
 #+end_src
-* seq?
+* (seq? (x))
 :PROPERTIES:
  :list: true
  :vector: false
@@ -324,7 +325,7 @@ Return true if x implements ISeq
   (seq? (hash-map)) ;=> false
   (seq? (sorted-map)) ;=> false
 #+end_src
-* seq? data
+* (seq? (x 1))
 :PROPERTIES:
  :list: true
  :vector: false
@@ -343,7 +344,7 @@ Return true if x implements ISeq
   (seq? (hash-map :a 1)) ;=> false
   (seq? (sorted-map :a 1)) ;=> false
 #+end_src
-* seq? seq
+* (seq? (seq (x)))
 :PROPERTIES:
 :list:     false
 :vector:   false
@@ -361,7 +362,7 @@ Return true if x implements ISeq
   (seq? (seq (hash-map))) ;=> false
   (seq? (seq (sorted-map))) ;=> false
 #+end_src
-* seq? seq data
+* (seq? (seq (x 1))
 :PROPERTIES:
 :list:     true
 :vector:   true
@@ -379,7 +380,7 @@ Return true if x implements ISeq
   (seq? (seq (hash-map :a 1))) ;=> true
   (seq? (seq (sorted-map :a 1))) ;=> true
 #+end_src
-* type seq
+* (type (seq (x)))
 :PROPERTIES:
  :list: nil
  :vector: nil
@@ -399,14 +400,14 @@ should not be used on any Iterable whose iterator repeatedly
 returns the same mutable object.
 
 #+begin_src clojure
-  (seq (list)) ;=> nil
-  (seq (vector)) ;=> nil
-  (seq (hash-set)) ;=> nil
-  (seq (sorted-set)) ;=> nil
-  (seq (hash-map)) ;=> nil
-  (seq (sorted-map)) ;=> nil
+  (type (seq (list))) ;=> nil
+  (type (seq (vector))) ;=> nil
+  (type (seq (hash-set))) ;=> nil
+  (type (seq (sorted-set))) ;=> nil
+  (type (seq (hash-map))) ;=> nil
+  (type (seq (sorted-map))) ;=> nil
 #+end_src
-* type sequence
+* (type (sequence (x))
 :PROPERTIES:
 :list:     PersistentList$EmptyList
 :VECTOR:   PersistentList$EmptyList
@@ -434,34 +435,7 @@ clojure.core/sequence
   (type (sequence (hash-map))) ;=> PersistentList$Emptylist
   (type (sequence (sorted-map))) ;=> PersistentList$Emptylist
 #+end_src
-* type seq data
-:PROPERTIES:
- :list:     PersistentList
- :vector: PersistentVector$ChunkedSeq
- :HASH-SET: APersistentMap$KeySeq
- :sorted-set: APersistentMap$KeySeq
- :hash-map: PersistentHashMap$NodeSeq
- :sorted-map: PersistentTreeMap$Seq
-:END:
-clojure.core/seq
-([coll])
-
-Returns a seq on the collection. If the collection is
-empty, returns nil.  (seq nil) returns nil. seq also works on
-Strings, native Java arrays (of reference types) and any objects
-that implement Iterable. Note that seqs cache values, thus seq
-should not be used on any Iterable whose iterator repeatedly
-returns the same mutable object.
-
-#+begin_src clojure
-  (type (seq (list 1))) ;=> Persistentlist
-  (type (seq (vector 1))) ;=> PersistentVector$ChunkedSeq
-  (type (seq (hash-set 1))) ;=> APersistentMap$KeySeq
-  (type (seq (sorted-set 1))) ;=> APersistentMap$KeySeq
-  (type (seq (hash-map :a 1))) ;=> PersistentHashMap$NodeSeq
-  (type (seq (sorted-map :a 1))) ;=> PersistentTreeMap$Seq
-#+end_src
-* type sequence data
+* (type (sequence (x 1)))
 :PROPERTIES:
  :list:     PersistentList
  :vector: PersistentVector$ChunkedSeq
@@ -490,6 +464,33 @@ clojure.core/sequence
   (type (sequence (sorted-map :a 1))) ;=> PersistentTreeMap$Sequence
 #+end_src
        
+* (type (seq (x 1)))
+:PROPERTIES:
+ :list:     PersistentList
+ :vector: PersistentVector$ChunkedSeq
+ :HASH-SET: APersistentMap$KeySeq
+ :sorted-set: APersistentMap$KeySeq
+ :hash-map: PersistentHashMap$NodeSeq
+ :sorted-map: PersistentTreeMap$Seq
+:END:
+clojure.core/seq
+([coll])
+
+Returns a seq on the collection. If the collection is
+empty, returns nil.  (seq nil) returns nil. seq also works on
+Strings, native Java arrays (of reference types) and any objects
+that implement Iterable. Note that seqs cache values, thus seq
+should not be used on any Iterable whose iterator repeatedly
+returns the same mutable object.
+
+#+begin_src clojure
+  (type (seq (list 1))) ;=> Persistentlist
+  (type (seq (vector 1))) ;=> PersistentVector$ChunkedSeq
+  (type (seq (hash-set 1))) ;=> APersistentMap$KeySeq
+  (type (seq (sorted-set 1))) ;=> APersistentMap$KeySeq
+  (type (seq (hash-map :a 1))) ;=> PersistentHashMap$NodeSeq
+  (type (seq (sorted-map :a 1))) ;=> PersistentTreeMap$Seq
+#+end_src
 * "unique elements"
 :PROPERTIES:
  :list: false
@@ -519,7 +520,7 @@ clojure.core/sequence
 :END:
 
 You cannot use the get function with a list to retrieve by index.
-* get
+* (get (x) 1)
 :PROPERTIES:
 :list:     nil
 :VECTOR:   nil
@@ -531,14 +532,14 @@ You cannot use the get function with a list to retrieve by index.
 ([map key] [map key not-found])
 
 #+begin_src clojure
-  (get (list) 0) ;=> nil
-  (get (vector) 0) ;=> nil
-  (get (hash-set) 0) ;=> nil
-  (get (sorted-set) 0) ;=> nil
+  (get (list) 1) ;=> nil
+  (get (vector) 1) ;=> nil
+  (get (hash-set) 1) ;=> nil
+  (get (sorted-set) 1) ;=> nil
   (get (hash-map) :a) ;=> nil
   (get (sorted-map) :a) ;=> nil
 #+end_src
-* get data
+* (get (x 1) 1)
 :PROPERTIES:
 :list:     nil
 :VECTOR:   true (index)
@@ -574,7 +575,7 @@ You cannot use the get function with a list to retrieve by index.
   (get (sorted-map :a 1 :b 2) :a) ;=> 1
   (get (sorted-map :a 1 :b 2) 1) ;=> ;=> Unhandled java.lang.ClassCastException
 #+end_src
-* get nil
+* (get nil 1)
 :PROPERTIES:
 :list:     nil
 :VECTOR:   nil
@@ -585,7 +586,7 @@ You cannot use the get function with a list to retrieve by index.
 :END:
 
 #+begin_src clojure
-(get nil 0) ; => nil
+(get nil 1) ; => nil
 #+end_src
 * get out of range
 :PROPERTIES:
@@ -596,7 +597,7 @@ You cannot use the get function with a list to retrieve by index.
 :HASH-MAP: nil or not-found
 :SORTED-MAP: nil or not-found
 :END:  
-* IFn
+* IFn  
 :PROPERTIES:
  :list: error
  :VECTOR:   ([:a :b :c] 1) => :b
@@ -643,7 +644,7 @@ error unless the first item of the list can be invoked as a function.
   ({:a 1 :b 2} :c); => nil
 #+end_src
        
-* nth
+* nth  
 :PROPERTIES:
 :list:     true
 :VECTOR:   true
@@ -669,14 +670,14 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 
   (nth (hash-map :a 1 :b 2) 0) ;=> Unhandled java.lang.UnsupportedOperationException
 #+end_src
-* nth nil
+* (nth nil 1)
 :PROPERTIES:
 :LIST:
 :VECTOR:   nil
 :END:
 
 #+begin_src clojure
-(nth nil 0) ; => nil
+(nth nil 1) ; => nil
 #+end_src
 * nth out of range
 :PROPERTIES:
@@ -713,7 +714,7 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 #+begin_src clojure
 (conj [1 2 3] 4) ; => [1 2 3 4]
 #+end_src
-
+       
 * cons (seq)
 :PROPERTIES:
  :list: front
@@ -730,7 +731,7 @@ Using nth to retrieve an element from a list is slower than using get to retriev
   (cons "two" (hash-set "first"))  ;=> ("two" "first")
   (cons "two" (sorted-set "first"))  ;=> ("two" "first")
 #+end_src
-
+       
 * "remove"
 :PROPERTIES:
  :list:
