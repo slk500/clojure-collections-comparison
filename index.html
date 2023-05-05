@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-05-05 Fri 17:43 -->
+<!-- 2023-05-05 Fri 17:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -288,10 +288,10 @@ legend:
 <td class="org-left">(sequential? (x))</td>
 <td class="org-left">true</td>
 <td class="org-left">true</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
-<td class="org-left">[ ]</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
+<td class="org-left">false</td>
 </tr>
 </tbody>
 <tbody>
@@ -648,8 +648,8 @@ legend:
 </tbody>
 </table>
 
-<div id="outline-container-orgd770594" class="outline-2">
-<h2 id="orgd770594"><span class="section-number-2">1.</span> "literal syntax"</h2>
+<div id="outline-container-org72dc86b" class="outline-2">
+<h2 id="org72dc86b"><span class="section-number-2">1.</span> "literal syntax"</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 <pre class="src src-clojure">(type '()) <span style="color: #696969;">;=&gt; PersistentList$EmptyList</span>
@@ -658,13 +658,13 @@ legend:
 </div>
 </div>
 
-<div id="outline-container-orgdc96854" class="outline-2">
-<h2 id="orgdc96854"><span class="section-number-2">2.</span> create from args</h2>
+<div id="outline-container-org373a33c" class="outline-2">
+<h2 id="org373a33c"><span class="section-number-2">2.</span> create from args</h2>
 <div class="outline-text-2" id="text-2">
 </div>
 </div>
-<div id="outline-container-org6d85d73" class="outline-2">
-<h2 id="org6d85d73"><span class="section-number-2">3.</span> create from collection</h2>
+<div id="outline-container-orgf6e377c" class="outline-2">
+<h2 id="orgf6e377c"><span class="section-number-2">3.</span> create from collection</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-clojure">(apply list [1 2 3]) <span style="color: #696969;">;=&gt; (1 2 3)</span>
@@ -676,8 +676,8 @@ legend:
 </div>
 </div>
 
-<div id="outline-container-orgd122d46" class="outline-2">
-<h2 id="orgd122d46"><span class="section-number-2">4.</span> (coll? (x))</h2>
+<div id="outline-container-orgc70ecaa" class="outline-2">
+<h2 id="orgc70ecaa"><span class="section-number-2">4.</span> (coll? (x))</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-clojure">(coll? (list)) <span style="color: #696969;">; =&gt; true</span>
@@ -691,8 +691,8 @@ legend:
 </div>
 </div>
 
-<div id="outline-container-orgfa85e18" class="outline-2">
-<h2 id="orgfa85e18"><span class="section-number-2">5.</span> (sequential? (x))</h2>
+<div id="outline-container-org5fb9ed5" class="outline-2">
+<h2 id="org5fb9ed5"><span class="section-number-2">5.</span> (sequential? (x))</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Returns true if coll implements Sequential
@@ -734,8 +734,8 @@ Sequential is an empty interface. I think it's just a signal that is put on cert
 </p>
 </div>
 </div>
-<div id="outline-container-orgfbec1fe" class="outline-2">
-<h2 id="orgfbec1fe"><span class="section-number-2">6.</span> (associative? (x))</h2>
+<div id="outline-container-org9d8c8a5" class="outline-2">
+<h2 id="org9d8c8a5"><span class="section-number-2">6.</span> (associative? (x))</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Returns true if coll implements Associative
@@ -751,8 +751,8 @@ Returns true if coll implements Associative
 </div>
 </div>
 </div>
-<div id="outline-container-org59f1a4e" class="outline-2">
-<h2 id="org59f1a4e"><span class="section-number-2">7.</span> (type (x))</h2>
+<div id="outline-container-orge2b5029" class="outline-2">
+<h2 id="orge2b5029"><span class="section-number-2">7.</span> (type (x))</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Returns the :type metadata of x, or its Class if none
@@ -768,8 +768,8 @@ Returns the :type metadata of x, or its Class if none
 </div>
 </div>
 </div>
-<div id="outline-container-orgdc5551f" class="outline-2">
-<h2 id="orgdc5551f"><span class="section-number-2">8.</span> (type (x 1))</h2>
+<div id="outline-container-org6703b38" class="outline-2">
+<h2 id="org6703b38"><span class="section-number-2">8.</span> (type (x 1))</h2>
 <div class="outline-text-2" id="text-8">
 <div class="org-src-container">
 <pre class="src src-clojure">(type (list 1)) <span style="color: #696969;">;=&gt; Persistentlist</span>
@@ -782,8 +782,8 @@ Returns the :type metadata of x, or its Class if none
 </div>
 </div>
 </div>
-<div id="outline-container-org1033609" class="outline-2">
-<h2 id="org1033609"><span class="section-number-2">9.</span> (list? (x))</h2>
+<div id="outline-container-org82737a5" class="outline-2">
+<h2 id="org82737a5"><span class="section-number-2">9.</span> (list? (x))</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 Returns true if x implements IPersistentlist
@@ -800,8 +800,8 @@ Returns true if x implements IPersistentlist
 </div>
 </div>
 
-<div id="outline-container-org3327222" class="outline-2">
-<h2 id="org3327222"><span class="section-number-2">10.</span> (vector? (x))</h2>
+<div id="outline-container-org906ee1c" class="outline-2">
+<h2 id="org906ee1c"><span class="section-number-2">10.</span> (vector? (x))</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 Return true if x implements IPersistentVector
@@ -817,8 +817,8 @@ Return true if x implements IPersistentVector
 </div>
 </div>
 </div>
-<div id="outline-container-orgcabcf18" class="outline-2">
-<h2 id="orgcabcf18"><span class="section-number-2">11.</span> (set? (x))</h2>
+<div id="outline-container-org4423ab7" class="outline-2">
+<h2 id="org4423ab7"><span class="section-number-2">11.</span> (set? (x))</h2>
 <div class="outline-text-2" id="text-11">
 <div class="org-src-container">
 <pre class="src src-clojure">(set? (list)) <span style="color: #696969;">;=&gt; false</span>
@@ -831,8 +831,8 @@ Return true if x implements IPersistentVector
 </div>
 </div>
 </div>
-<div id="outline-container-org5033ab6" class="outline-2">
-<h2 id="org5033ab6"><span class="section-number-2">12.</span> (map? (x))</h2>
+<div id="outline-container-orgca192e7" class="outline-2">
+<h2 id="orgca192e7"><span class="section-number-2">12.</span> (map? (x))</h2>
 <div class="outline-text-2" id="text-12">
 <div class="org-src-container">
 <pre class="src src-clojure">(map? (list)) <span style="color: #696969;">;=&gt; false</span>
@@ -845,8 +845,8 @@ Return true if x implements IPersistentVector
 </div>
 </div>
 </div>
-<div id="outline-container-org89004a3" class="outline-2">
-<h2 id="org89004a3"><span class="section-number-2">13.</span> (seq? (x))</h2>
+<div id="outline-container-orgfeda2bb" class="outline-2">
+<h2 id="orgfeda2bb"><span class="section-number-2">13.</span> (seq? (x))</h2>
 <div class="outline-text-2" id="text-13">
 <p>
 Return true if x implements ISeq
@@ -863,8 +863,8 @@ Return true if x implements ISeq
 </div>
 </div>
 </div>
-<div id="outline-container-orgcbdf9d3" class="outline-2">
-<h2 id="orgcbdf9d3"><span class="section-number-2">14.</span> (seq? (x 1))</h2>
+<div id="outline-container-org3e21225" class="outline-2">
+<h2 id="org3e21225"><span class="section-number-2">14.</span> (seq? (x 1))</h2>
 <div class="outline-text-2" id="text-14">
 <p>
 Return true if x implements ISeq
@@ -881,8 +881,8 @@ Return true if x implements ISeq
 </div>
 </div>
 </div>
-<div id="outline-container-org2967259" class="outline-2">
-<h2 id="org2967259"><span class="section-number-2">15.</span> (seq? (seq (x)))</h2>
+<div id="outline-container-orgd34409a" class="outline-2">
+<h2 id="orgd34409a"><span class="section-number-2">15.</span> (seq? (seq (x)))</h2>
 <div class="outline-text-2" id="text-15">
 <div class="org-src-container">
 <pre class="src src-clojure">(seq? (seq (list))) <span style="color: #696969;">;=&gt; false</span>
@@ -895,8 +895,8 @@ Return true if x implements ISeq
 </div>
 </div>
 </div>
-<div id="outline-container-orgaee1352" class="outline-2">
-<h2 id="orgaee1352"><span class="section-number-2">16.</span> (seq? (seq (x 1))</h2>
+<div id="outline-container-orgd19ffdf" class="outline-2">
+<h2 id="orgd19ffdf"><span class="section-number-2">16.</span> (seq? (seq (x 1))</h2>
 <div class="outline-text-2" id="text-16">
 <div class="org-src-container">
 <pre class="src src-clojure">(seq? (seq (list 1))) <span style="color: #696969;">;=&gt; true</span>
@@ -909,8 +909,8 @@ Return true if x implements ISeq
 </div>
 </div>
 </div>
-<div id="outline-container-org8e7b916" class="outline-2">
-<h2 id="org8e7b916"><span class="section-number-2">17.</span> (type (seq (x)))</h2>
+<div id="outline-container-org18a764d" class="outline-2">
+<h2 id="org18a764d"><span class="section-number-2">17.</span> (type (seq (x)))</h2>
 <div class="outline-text-2" id="text-17">
 <p>
 clojure.core/seq
@@ -937,8 +937,8 @@ returns the same mutable object.
 </div>
 </div>
 </div>
-<div id="outline-container-org96f9359" class="outline-2">
-<h2 id="org96f9359"><span class="section-number-2">18.</span> (type (sequence (x))</h2>
+<div id="outline-container-org07b7fca" class="outline-2">
+<h2 id="org07b7fca"><span class="section-number-2">18.</span> (type (sequence (x))</h2>
 <div class="outline-text-2" id="text-18">
 <p>
 clojure.core/sequence
@@ -964,8 +964,8 @@ clojure.core/sequence
 </div>
 </div>
 </div>
-<div id="outline-container-org058758e" class="outline-2">
-<h2 id="org058758e"><span class="section-number-2">19.</span> (type (sequence (x 1)))</h2>
+<div id="outline-container-orgd42f5db" class="outline-2">
+<h2 id="orgd42f5db"><span class="section-number-2">19.</span> (type (sequence (x 1)))</h2>
 <div class="outline-text-2" id="text-19">
 <p>
 clojure.core/sequence
@@ -992,8 +992,8 @@ clojure.core/sequence
 </div>
 </div>
 
-<div id="outline-container-org439404b" class="outline-2">
-<h2 id="org439404b"><span class="section-number-2">20.</span> (type (seq (x 1)))</h2>
+<div id="outline-container-org1af4bd4" class="outline-2">
+<h2 id="org1af4bd4"><span class="section-number-2">20.</span> (type (seq (x 1)))</h2>
 <div class="outline-text-2" id="text-20">
 <p>
 clojure.core/seq
@@ -1020,26 +1020,26 @@ returns the same mutable object.
 </div>
 </div>
 </div>
-<div id="outline-container-org6d15f91" class="outline-2">
-<h2 id="org6d15f91"><span class="section-number-2">21.</span> "unique elements"</h2>
+<div id="outline-container-org34653a6" class="outline-2">
+<h2 id="org34653a6"><span class="section-number-2">21.</span> "unique elements"</h2>
 <div class="outline-text-2" id="text-21">
 </div>
 </div>
-<div id="outline-container-org5217175" class="outline-2">
-<h2 id="org5217175"><span class="section-number-2">22.</span> "same order of elements"</h2>
+<div id="outline-container-org11dd218" class="outline-2">
+<h2 id="org11dd218"><span class="section-number-2">22.</span> "same order of elements"</h2>
 <div class="outline-text-2" id="text-22">
 </div>
 </div>
-<div id="outline-container-orgc5da215" class="outline-2">
-<h2 id="orgc5da215"><span class="section-number-2">23.</span> "read"</h2>
+<div id="outline-container-orgadfb251" class="outline-2">
+<h2 id="orgadfb251"><span class="section-number-2">23.</span> "read"</h2>
 <div class="outline-text-2" id="text-23">
 <p>
 You cannot use the get function with a list to retrieve by index.
 </p>
 </div>
 </div>
-<div id="outline-container-orgfc32b75" class="outline-2">
-<h2 id="orgfc32b75"><span class="section-number-2">24.</span> (get (x) 1)</h2>
+<div id="outline-container-org8a3c3f7" class="outline-2">
+<h2 id="org8a3c3f7"><span class="section-number-2">24.</span> (get (x) 1)</h2>
 <div class="outline-text-2" id="text-24">
 <p>
 ([map key] [map key not-found])
@@ -1056,8 +1056,8 @@ You cannot use the get function with a list to retrieve by index.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb5564fe" class="outline-2">
-<h2 id="orgb5564fe"><span class="section-number-2">25.</span> (get (x 1) 1)</h2>
+<div id="outline-container-org5d5d2ae" class="outline-2">
+<h2 id="org5d5d2ae"><span class="section-number-2">25.</span> (get (x 1) 1)</h2>
 <div class="outline-text-2" id="text-25">
 <p>
 ([map key] [map key not-found])
@@ -1091,8 +1091,8 @@ You cannot use the get function with a list to retrieve by index.
 </div>
 </div>
 </div>
-<div id="outline-container-org7d619e7" class="outline-2">
-<h2 id="org7d619e7"><span class="section-number-2">26.</span> (get nil 1)</h2>
+<div id="outline-container-org7462339" class="outline-2">
+<h2 id="org7462339"><span class="section-number-2">26.</span> (get nil 1)</h2>
 <div class="outline-text-2" id="text-26">
 <div class="org-src-container">
 <pre class="src src-clojure">(get <span style="color: #d2a6ff;">nil</span> 1) <span style="color: #696969;">; =&gt; nil</span>
@@ -1100,13 +1100,13 @@ You cannot use the get function with a list to retrieve by index.
 </div>
 </div>
 </div>
-<div id="outline-container-org4843071" class="outline-2">
-<h2 id="org4843071"><span class="section-number-2">27.</span> get out of range</h2>
+<div id="outline-container-orgdb5f524" class="outline-2">
+<h2 id="orgdb5f524"><span class="section-number-2">27.</span> get out of range</h2>
 <div class="outline-text-2" id="text-27">
 </div>
 </div>
-<div id="outline-container-orgb15f1ef" class="outline-2">
-<h2 id="orgb15f1ef"><span class="section-number-2">28.</span> IFn</h2>
+<div id="outline-container-org30eeab6" class="outline-2">
+<h2 id="org30eeab6"><span class="section-number-2">28.</span> IFn</h2>
 <div class="outline-text-2" id="text-28">
 <div class="org-src-container">
 <pre class="src src-clojure">('(1 2 3) 1) <span style="color: #696969;">; class clojure.lang.PersistentList cannot be cast to class clojure.lang.IFn (clojure.lang.PersistentList and clojure.lang.IFn</span>
@@ -1136,8 +1136,8 @@ error unless the first item of the list can be invoked as a function.
 </div>
 </div>
 </div>
-<div id="outline-container-org3c36ac7" class="outline-2">
-<h2 id="org3c36ac7"><span class="section-number-2">29.</span> IFn out of range</h2>
+<div id="outline-container-org05c7ca1" class="outline-2">
+<h2 id="org05c7ca1"><span class="section-number-2">29.</span> IFn out of range</h2>
 <div class="outline-text-2" id="text-29">
 <div class="org-src-container">
 <pre class="src src-clojure">([<span style="color: #d2a6ff;">:a</span> <span style="color: #d2a6ff;">:b</span>] 2) <span style="color: #696969;">;=&gt; IndexOutOfBoundsException</span>
@@ -1147,8 +1147,8 @@ error unless the first item of the list can be invoked as a function.
 </div>
 </div>
 
-<div id="outline-container-org6bec929" class="outline-2">
-<h2 id="org6bec929"><span class="section-number-2">30.</span> nth</h2>
+<div id="outline-container-orgfe8f514" class="outline-2">
+<h2 id="orgfe8f514"><span class="section-number-2">30.</span> nth</h2>
 <div class="outline-text-2" id="text-30">
 <p>
 ([coll index] [coll index not-found]) throws an exception unless not-found is supplied
@@ -1174,8 +1174,8 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 </div>
 </div>
-<div id="outline-container-org5e79685" class="outline-2">
-<h2 id="org5e79685"><span class="section-number-2">31.</span> (nth nil 1)</h2>
+<div id="outline-container-org1fc6f85" class="outline-2">
+<h2 id="org1fc6f85"><span class="section-number-2">31.</span> (nth nil 1)</h2>
 <div class="outline-text-2" id="text-31">
 <div class="org-src-container">
 <pre class="src src-clojure">(nth <span style="color: #d2a6ff;">nil</span> 1) <span style="color: #696969;">; =&gt; nil</span>
@@ -1183,8 +1183,8 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 </div>
 </div>
-<div id="outline-container-orgbe56b22" class="outline-2">
-<h2 id="orgbe56b22"><span class="section-number-2">32.</span> nth out of range</h2>
+<div id="outline-container-org838b617" class="outline-2">
+<h2 id="org838b617"><span class="section-number-2">32.</span> nth out of range</h2>
 <div class="outline-text-2" id="text-32">
 <div class="org-src-container">
 <pre class="src src-clojure">
@@ -1192,13 +1192,13 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 </div>
 </div>
-<div id="outline-container-orgdca262c" class="outline-2">
-<h2 id="orgdca262c"><span class="section-number-2">33.</span> "add"</h2>
+<div id="outline-container-orga430094" class="outline-2">
+<h2 id="orga430094"><span class="section-number-2">33.</span> "add"</h2>
 <div class="outline-text-2" id="text-33">
 </div>
 </div>
-<div id="outline-container-org7a1a5b5" class="outline-2">
-<h2 id="org7a1a5b5"><span class="section-number-2">34.</span> conj (coll)</h2>
+<div id="outline-container-org998364c" class="outline-2">
+<h2 id="org998364c"><span class="section-number-2">34.</span> conj (coll)</h2>
 <div class="outline-text-2" id="text-34">
 <div class="org-src-container">
 <pre class="src src-clojure">(conj [1 2 3] 4) <span style="color: #696969;">; =&gt; [1 2 3 4]</span>
@@ -1207,8 +1207,8 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 </div>
 
-<div id="outline-container-orgfe165c8" class="outline-2">
-<h2 id="orgfe165c8"><span class="section-number-2">35.</span> cons (seq)</h2>
+<div id="outline-container-org186f0fa" class="outline-2">
+<h2 id="org186f0fa"><span class="section-number-2">35.</span> cons (seq)</h2>
 <div class="outline-text-2" id="text-35">
 <div class="org-src-container">
 <pre class="src src-clojure">(cons <span style="color: #6C8A56;">"two"</span> (list <span style="color: #6C8A56;">"first"</span>)) <span style="color: #696969;">;=&gt; ("two" "first")</span>
@@ -1220,13 +1220,13 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 </div>
 
-<div id="outline-container-org03c6b69" class="outline-2">
-<h2 id="org03c6b69"><span class="section-number-2">36.</span> "remove"</h2>
+<div id="outline-container-orga90e0ed" class="outline-2">
+<h2 id="orga90e0ed"><span class="section-number-2">36.</span> "remove"</h2>
 <div class="outline-text-2" id="text-36">
 </div>
 </div>
-<div id="outline-container-orgb9aff38" class="outline-2">
-<h2 id="orgb9aff38"><span class="section-number-2">37.</span> contains?</h2>
+<div id="outline-container-orgf8beee7" class="outline-2">
+<h2 id="orgf8beee7"><span class="section-number-2">37.</span> contains?</h2>
 <div class="outline-text-2" id="text-37">
 <div class="org-src-container">
 <pre class="src src-clojure">#+begin_src clojure
@@ -1248,7 +1248,7 @@ Using nth to retrieve an element from a list is slower than using get to retriev
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sławomir Grochowski</p>
-<p class="date">Created: 2023-05-05 Fri 17:43</p>
+<p class="date">Created: 2023-05-05 Fri 17:48</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
